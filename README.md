@@ -21,7 +21,15 @@ After the course participants will be able to
 - Write better=more readable code
 - Avoid bugs through best practices for example in passing keyword arguments
 
-# Time and place
+## Time and place
 The course takes place online. A link will be sent to all registered participants.
 
 Course date: Nov 8th 2022, 9:00AM - 1:00PM 
+
+## Course content
+
+1. PEP recommendations
+1. Linting
+1. Code formatting
+1. Write better code: Examples
+1. Write better code: Pitfalls
