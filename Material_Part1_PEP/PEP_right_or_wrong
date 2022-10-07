@@ -1,0 +1,8 @@
+# Naming conventions
+
+Which of the below naming conventions are correct?
+
+- [ ] `class my-first-analysis:` 
+- [ ] `class my_first_analysis:` 
+- [ ] `class Myfirstanalysis:` 
+- [ ] `class MyFirstAnalysis:` 
