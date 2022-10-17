@@ -28,7 +28,7 @@ Course date: Nov 8th 2022, 9:00AM - 1:00PM
 
 ## Course content
 
-1. PEP recommendations
+1. [PEP recommendations](Material_Part1_PEP/PEP_recommendations/README.md)
 1. Linting
 1. Code formatting
 1. Write better code: Examples

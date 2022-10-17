@@ -99,6 +99,7 @@ Make use of indentation when using continuation lines:
             def some_other():
                 pass
 
+
 1. Encoding: The source file should always use UTF-8 encoding, and preferably without non-ASCII characters. It also makes your code more general if you use English words for identifiers (function names etc.).
 
 1. Imports should be on separate lines:
