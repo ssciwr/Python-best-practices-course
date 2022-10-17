@@ -99,6 +99,40 @@ Make use of indentation when using continuation lines:
             def some_other():
                 pass
 
+1. Encoding: The source file should always use UTF-8 encoding, and preferably without non-ASCII characters. It also makes your code more general if you use English words for identifiers (function names etc.).
+
+1. Imports should be on separate lines:
+
+        import os
+        import sys
+
+    and not
+
+        import os, sys
+
+1. String quotes: Do either use `'` or `"` throughout your project - do not mix. For triple-quoted strings, always use `"`, so `"""` instead of `'''`.
+
+1. Whitespaces:
+    - no whitespace in parantheses - do `{item: 1}`, don't ```{ item: 1 }```
+    - whitespace after comma - do `a, b`, don't `a,b`, but not if followed by a parenthesis - do `(a, b,)` don't `(a, b, )`
+    - no whitespace before parenthesis - do `calc_this(x)` don't `calc_this (x)`
+    - no trailing whitespaces
+    - whitespace around operators (ie. `=, +, +=, ==, is, and`) except for keywords - do `(x=circle)`, don't `(x = circle)`
+1. Keep comments up-to-date when changing the code. Comments should be complete sentences with a capitalized first word (unless it is an identifier). Use English language preferably.
+1. Include docstrings - see below (PEP 257).
+1. Naming conventions:
+- package and module names: short all-lowercase, preferably no underscores (do `analysis.py`, don't `Analysis.py`; do `mypackage`, don't `my_package`)
+- class names: use CamelCase (do `MyClass`, don't `myclass`, `Myclass`, `MYCLASS`)
+- functions and variable names: use lowercase with underscore to increase readibility (do `my_function()`, don't `myfunction()`, `MyFunction()`; do `accuracy_param`, don't `accuracyparam`, `accuracy_PARAM`)
+- constants: all capital with separating underscore (do `MIN_THRESHOLD`, don't `Min_Threshold`)
+- never use `l, O, I` letter names because of their similarity with `1` and `0`
+
+1. Underscores:
+- avoid name clashes using a trailing underscore or synonym (`class_`)
+- single leading underscore for methods that should only be used "internally" (should not be made available to the package or class interface)
+- use two leading underscores to invoke name mangling for attributes that should not be used in subclasses of the parent class (`__only_parent`)
+- double leading and trailing underscores for "magic" objects (dunder methods) - `__init__`, `__str__`
+
 
 ## What is PEP 257?
 
