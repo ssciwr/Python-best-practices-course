@@ -1,3 +1,6 @@
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
+
 # Python-best-practices-course
 Material for the course "Python best practices", Scientific Software Center, Heidelberg University
 
@@ -28,8 +31,8 @@ Course date: Nov 8th 2022, 9:00AM - 1:00PM
 
 ## Course content
 
-1. [PEP recommendations](Material_Part1_PEP/PEP_recommendations/README.md)
-1. Linting
+1. [PEP recommendations](Material_Part1_PEP/README.md)
+1. [Linting](Material_Part2_Linter/README.md)
 1. Code formatting
 1. Write better code: Examples
 1. Write better code: Pitfalls
