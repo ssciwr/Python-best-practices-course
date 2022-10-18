@@ -134,6 +134,9 @@ Make use of indentation when using continuation lines:
 - use two leading underscores to invoke name mangling for attributes that should not be used in subclasses of the parent class (`__only_parent`)
 - double leading and trailing underscores for "magic" objects (dunder methods) - `__init__`, `__str__`
 
+**Task 1: Let's take a look at some [examples](./PEP_right_or_wrong).**
+
+**Task 2: Work through the examples [in this folder](.). Correct the issues and (i) stage, commit and push the changes to your fork of the course repo, then open a pull request with respect to the original repository - then I can see the changes. (ii) Send me your changed files via email.**
 
 ## What is PEP 257?
 
