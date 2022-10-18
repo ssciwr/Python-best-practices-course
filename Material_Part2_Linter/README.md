@@ -86,5 +86,5 @@ flake8 Material_Part1_PEP
 
 ## Excurse: Flake8 for notebooks
 
-# Code formatter
-A code formatter takes care of formatting your code so that it adheres to the PEP 8 standards.
+
+
