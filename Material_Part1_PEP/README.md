@@ -12,27 +12,24 @@ You can find a list of PEPs [here](https://peps.python.org/).
 
 ## PEP 8 summary
 
-1. Line length
+1. Line length  
 Don't write lines that are very long. Reason: Often you would use multiple windows next to each other and that makes it hard to read code (and possibly lead to introduction of bugs).  
 PEP 8 recommends lines no longer than 79 characters, but 90 is also a good number.
 
 1. Alignment of code  
 Make use of indentation when using continuation lines:  
 
-        foo = long_function_name(var_one, var_two,
-                                 var_three, var_four)  
-                                 
+                foo = long_function_name(var_one, var_two,
+                                 var_three, var_four)
     instead of 
 
         foo = long_function_name(var_one, var_two,
             var_three, var_four)
-
     You may also use hanging indents
 
         foo = long_function_name(
             var_one, var_two,
             var_three, var_four)
-
 1. Break line before binary operator
         
         income = (gross_wages
@@ -40,7 +37,6 @@ Make use of indentation when using continuation lines:
           + (dividends - qualified_dividends)
           - ira_deduction
           - student_loan_interest)
-
     instead of  
 
         income = (gross_wages +
@@ -50,69 +46,61 @@ Make use of indentation when using continuation lines:
           student_loan_interest)
 
 1. Blank lines:  
-- two blank lines after `import` statements
-- two blank lines between functions and classes
-- one blank line between methods of classes
+    - two blank lines after `import` statements
+    - two blank lines between functions and classes
+    - one blank line between methods of classes
 
-        import os
-
-
-        def greeting():
-           print("Hello world!")
+                import os
 
 
-        def goodbye():
-        print("See ya!")
-    
-    instead of
-
-        import os
-
-        def greeting():
-           print("Hello world!")
-
-        def goodbye():
-        print("See ya!")
-
-    and
-
-        def something():
-            pass
+                def greeting():
+                    print("Hello world!")
 
 
-        class MyClass:
+                def goodbye():
+                    print("See ya!")    
+        instead of
 
-            def my_method():
-                pass
+                import os
 
-            def some_other():
-                pass
+                def greeting():
+                    print("Hello world!")
 
+                def goodbye():
+                    print("See ya!")
+        and
+
+                def something():
+                    pass
+
+
+                class MyClass:
+
+                    def my_method():
+                        pass
+
+                    def some_other():
+                        pass
     instead of 
 
-        def something():
-            pass
-
-        class MyClass:
-            def my_method():
-                pass
-            def some_other():
+            def something():
                 pass
 
-
+            class MyClass:
+                def my_method():
+                    pass
+                def some_other():
+                    pass
 1. Encoding: The source file should always use UTF-8 encoding, and preferably without non-ASCII characters. It also makes your code more general if you use English words for identifiers (function names etc.).
-
 1. Imports should be on separate lines:
 
         import os
         import sys
-
     and not
 
         import os, sys
 
 1. String quotes: Do either use `'` or `"` throughout your project - do not mix. For triple-quoted strings, always use `"`, so `"""` instead of `'''`.
-
 1. Whitespaces:
     - no whitespace in parantheses - do `{item: 1}`, don't ```{ item: 1 }```
     - whitespace after comma - do `a, b`, don't `a,b`, but not if followed by a parenthesis - do `(a, b,)` don't `(a, b, )`
@@ -122,19 +110,18 @@ Make use of indentation when using continuation lines:
 1. Keep comments up-to-date when changing the code. Comments should be complete sentences with a capitalized first word (unless it is an identifier). Use English language preferably.
 1. Include docstrings - see below (PEP 257).
 1. Naming conventions:
-- package and module names: short all-lowercase, preferably no underscores (do `analysis.py`, don't `Analysis.py`; do `mypackage`, don't `my_package`)
-- class names: use CamelCase (do `MyClass`, don't `myclass`, `Myclass`, `MYCLASS`)
-- functions and variable names: use lowercase with underscore to increase readibility (do `my_function()`, don't `myfunction()`, `MyFunction()`; do `accuracy_param`, don't `accuracyparam`, `accuracy_PARAM`)
-- constants: all capital with separating underscore (do `MIN_THRESHOLD`, don't `Min_Threshold`)
-- never use `l, O, I` letter names because of their similarity with `1` and `0`
-
+    - package and module names: short all-lowercase, preferably no underscores (do `analysis.py`, don't `Analysis.py`; do `mypackage`, don't `my_package`)
+    - class names: use CamelCase (do `MyClass`, don't `myclass`, `Myclass`, `MYCLASS`)
+    - functions and variable names: use lowercase with underscore to increase readibility (do `my_function()`, don't `myfunction()`, `MyFunction()`; do `accuracy_param`, don't `accuracyparam`, `accuracy_PARAM`)
+    - constants: all capital with separating underscore (do `MIN_THRESHOLD`, don't `Min_Threshold`)
+    - never use `l, O, I` letter names because of their similarity with `1` and `0`
 1. Underscores:
-- avoid name clashes using a trailing underscore or synonym (`class_`)
-- single leading underscore for methods that should only be used "internally" (should not be made available to the package or class interface)
-- use two leading underscores to invoke name mangling for attributes that should not be used in subclasses of the parent class (`__only_parent`)
-- double leading and trailing underscores for "magic" objects (dunder methods) - `__init__`, `__str__`
+    - avoid name clashes using a trailing underscore or synonym (`class_`)
+    - single leading underscore for methods that should only be used "internally" (should not be made available to the package or class interface)
+    - use two leading underscores to invoke name mangling for attributes that should not be used in subclasses of the parent class (`__only_parent`)
+    - double leading and trailing underscores for "magic" objects (dunder methods) - `__init__`, `__str__`
 
-**Task 1: Let's take a look at some [examples](./PEP_right_or_wrong).**
+**Task 1: Let's take a look at some [examples](./PEP_right_or_wrong.md).**
 
 **Task 2: Work through the examples [in this folder](.). Correct the issues and (i) stage, commit and push the changes to your fork of the course repo, then open a pull request with respect to the original repository - then I can see the changes. (ii) Send me your changed files via email.**
 
