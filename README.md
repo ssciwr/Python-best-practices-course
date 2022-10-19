@@ -29,5 +29,5 @@ Course date: Nov 8th 2022, 9:00AM - 1:00PM
 1. [PEP recommendations](Material_Part1_PEP/README.md)
 1. [Linting](Material_Part2_Linter/README.md)
 1. [Code formatting](Material_Part3_Formatter/README.md)
-1. Write better code: Examples
-1. Write better code: Pitfalls
+1. Write better code: [Pitfalls](Material_part4_Pitfalls)
+1. Write better code: [Examples](Material_part5_Examples)
