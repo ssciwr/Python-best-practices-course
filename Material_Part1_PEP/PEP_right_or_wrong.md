@@ -35,29 +35,29 @@ result = my_function(
 
 Which of the below naming conventions are correct?  
 Classes:  
-- [ ] `class my-first-analysis:` 
-- [ ] `class my_first_analysis:` 
-- [ ] `class Myfirstanalysis:` 
-- [ ] `class MyFirstAnalysis:`   
+- [ ] a `class my-first-analysis:` 
+- [ ] b `class my_first_analysis:` 
+- [ ] c `class Myfirstanalysis:` 
+- [ ] d `class MyFirstAnalysis:`   
 Functions:  
-- [ ] `def calc_area(x):` 
-- [ ] `def calc-area(x):` 
-- [ ] `def calcarea(x):` 
-- [ ] `def Calc_area(x):`   
+- [ ] a `def calc_area(x):` 
+- [ ] b `def calc-area(x):` 
+- [ ] c `def calcarea(x):` 
+- [ ] d `def Calc_area(x):`   
 Variables:  
-- [ ] `O = abs(x)`
-- [ ] `I = abs(x)`
-- [ ] `l = abs(x)`
-- [ ] `abs_x = abs(x)`  
+- [ ] a `O = abs(x)`
+- [ ] b `I = abs(x)`
+- [ ] c `l = abs(x)`
+- [ ] d `abs_x = abs(x)`  
 Constants:  
-- [ ] `THRESHOLD = 0.1`
-- [ ] `threshold = 0.1`
-- [ ] `Threshold = 0.1`
-- [ ] `T = 0.1`  
+- [ ] a `THRESHOLD = 0.1`
+- [ ] b `threshold = 0.1`
+- [ ] c `Threshold = 0.1`
+- [ ] d `T = 0.1`  
 Other:  
-- [ ] ` list = my_areas`
-- [ ] ` list_ = my_areas`
-- [ ] ` __list__ = my_areas`
-- [ ] ` _list = my_areas`  
+- [ ] a ` list = my_areas`
+- [ ] b ` list_ = my_areas`
+- [ ] c ` __list__ = my_areas`
+- [ ] d ` _list = my_areas`  
 Modules:  
 Packages:  
