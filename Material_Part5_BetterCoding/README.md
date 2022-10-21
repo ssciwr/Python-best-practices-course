@@ -1,7 +1,5 @@
 # Better coding
 
-https://www.youtube.com/c/Coreyms
-
 ## Why you should run code in your module only if `__name__` is `"__main__"`
 
 Always encapsulate your module's content in functions/classes and have all function calls and instantiations contained after the statement
