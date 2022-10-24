@@ -11,6 +11,7 @@ def read_in(filedir, filename, data_type, myheader=False):
     data = reading_method(filedir, filename, myheader)
     return data
 
+
 def read_numpy(filedir, filename, myheader):
     name = "{}{}".format(filedir, filename)
     print("Reading from file {} - numpy".format(name))
@@ -20,6 +21,7 @@ def read_numpy(filedir, filename, myheader):
         data = np.loadtxt(name, skiprows=0)
     data = data.T
     return data
+
 
 def read_pandas(filedir, filename, myheader):
     name = "{}{}".format(filedir, filename)

@@ -12,6 +12,7 @@ def read_in(filedir, filename, data_type, myheader=False):
     data = reading_method(name, myheader)
     return data
 
+
 def read_numpy(name, myheader):
     print("Reading from file {} - numpy".format(name))
     if myheader:
@@ -21,6 +22,7 @@ def read_numpy(name, myheader):
     data = np.loadtxt(name, skiprows=skip)
     data = data.T
     return data
+
 
 def read_pandas(name, *kwargs):
     print("Reading from file {} - pandas".format(name))
