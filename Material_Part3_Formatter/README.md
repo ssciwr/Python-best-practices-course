@@ -28,7 +28,7 @@ black Material_Part2_Formatter/example1.py --diff --color
 ```
 
 ## Black with jupyter notebooks
-
+To use black with jupyter notebooks, you need to install the extension using
 ```
 pip install 'black[jupyter]'
 ```
