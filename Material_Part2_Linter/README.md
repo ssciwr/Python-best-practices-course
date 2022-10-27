@@ -41,7 +41,7 @@ You can also select to report specific errors only:
 ```
 flake8 --select E305 Material_Part2_Linter/example1.py
 ```
-- this will return 
+this will return 
 ```
 Material_Part2_Linter/example1.py:32:1: E305 expected 2 blank lines after class or function definition, found 1
 ```
@@ -53,19 +53,19 @@ This will report all errors other than E305. More than one error code is ignored
 ```
 flake8 --ignore E303,E305 Material_Part2_Linter/example1.py
 ```
-Try out all the commands and familiarize yourself with the output.
+**Task 1: Try out all the commands and familiarize yourself with the output.**
 
 ## Configuring flake8
 In some cases, you may want to ignore flake8 errors or set limits differently, for example if you want to increase your line length to 120. You can reconfiger flake8 in a [number of different ways](https://flake8.pycqa.org/en/latest/user/configuration.html), and we will be using a flake8 configuration file. 
 
-In order to do so, place a `.flake8` file in the root of your folder. The top of the file contains the line `[flake8]` - see [the example](../.flake8). A list of ignored errors can be included following the `ignore` option.
+In order to do so, place a `.flake8` file in the root of your folder. The top of the file contains the line `[flake8]` - see [the example](https://github.com/ssciwr/Python-best-practices-course/blob/main/.flake8). A list of ignored errors can be included following the `ignore` option.
 
 If you want to ignore additional errors to the ones specified in your flake8 configuration file, use `extend-ignore` (instead of `ignore`) when invoking flake8 (just using `ignore` will overwrite the specifications in your .flake8 configuration).
 ```
 flake8 --extend-ignore E305 Material_Part2_Linter/example1.py
 ```
 
-A good `.flake8` file will look like this
+A good `.flake8` file will look like this:
 ```
 [flake8]
 extend-ignore = E203
@@ -78,14 +78,16 @@ exclude =
     dist
 max-complexity = 10
 ```
-using `extend-ignore` not to overwrite previously defined options, and excluding directories for the linter to parse - so you can invoke flake8 on your complete package / source folder instead of selecting each file manually:
+This uses `extend-ignore` not to overwrite previously defined options, and excludes directories for the linter to parse - so you can invoke flake8 on your complete package / source folder instead of selecting each file manually:
 ```
 flake8 Material_Part1_PEP
 ```
-**Task: Run the linter on your previously formatted code to see if you have missed any deviations in code style or obvious bugs.**
+**Task 2: Run the linter on your previously formatted code from the last chapter to see if you have missed anything.**
+
+**Bonustask: Run the linter on [example4.py](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part2_Linter/example4.py).** 
 
 ## Flake8 for jupyter notebooks
-To lint your jupyter notebooks using flake8, install the extension using
+To lint your jupyter notebooks using flake8, install the [modified version](https://github.com/s-weigand/flake8-nb) using
 ```
 pip install flake8-nb
 ```
@@ -102,7 +104,11 @@ Material_Part2_Linter/example_jupyter.ipynb#In[2]:1:1: E265 block comment should
 ```
 The `[2]` refers to the execution count cell #2, and the following two numbers `[2]:1:1:` are the line and position number (so line 1, first position on that line).
 
-If you have not executed any of the cells (so your notebook kernel is clean and also all output has been cleared/not yet been generated), then the reporting will show an empty `[ ]`.
+If you have not executed any of the cells (so your notebook kernel is clean and also all output has been cleared/not yet been generated), then the reporting will show an empty 
+```
+[ ]
+```
+.
 
 ### Custom reporting of flake8-nb
 
@@ -123,3 +129,5 @@ As flake8-nb is basically an extension for flake8, you can also provide a config
 notebook_cell_format = '{nb_path}:code_cell#{code_cell_count}'
 ```
 in that file. Similarly, you can provide all the same options as in the `.flake8` configuration file. 
+
+**Task 3: Familiarize yourself with `flake8-nb`.**
