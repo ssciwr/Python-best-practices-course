@@ -140,7 +140,7 @@ Docstrings are the descriptive string literals that you should include directly 
 For example:
 ```
 def area_circ(r_in ):
-    """Calculates the area of a circle with given radius.
+    """Calculate the area of a circle with given radius.
 
     :Input: The radius of the circle (float, >=0).
     :Returns: The area of the circle (float)."""
