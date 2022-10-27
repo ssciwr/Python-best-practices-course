@@ -3,36 +3,31 @@
 Which of the below alignments are correct?
 
 - [ ] a
-```
-abs_area = area_A + area_B +
-  area_C + area_D
-```
+
+        abs_area = area_A + area_B +
+          area_C + area_D
 
 - [ ] b
-```
-abs_area = area_A + area_B 
-  + area_C + area_D
-```
+
+        abs_area = area_A + area_B 
+            + area_C + area_D
 
 - [ ] c
-```
-result = my_function(area_A, area_B, 
-    area_C, area_D)
-```
+
+        result = my_function(area_A, area_B, 
+            area_C, area_D)
 
 - [ ] d
-```
-result = my_function(area_A, area_B, 
-                     area_C, area_D)
-```
+
+        result = my_function(area_A, area_B, 
+                             area_C, area_D)
 
 - [ ] e
-```
-result = my_function(
-    area_A, area_B, 
-    area_C, area_D
-    )
-```
+
+        result = my_function(
+            area_A, area_B, 
+            area_C, area_D
+            )
 
 # 2. Naming conventions
 
