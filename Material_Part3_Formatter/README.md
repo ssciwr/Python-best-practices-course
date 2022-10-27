@@ -17,24 +17,29 @@ flake8 Material_Part3_Formatter/example1.py
 ```
 You will notice that flake8 is not returning errors except a line length error for one of the comment lines: Note that black does not reformat comments other than inserting proper whitespace before and after the #.
 
+**Task 1: Reformat [`example1.py`](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example1.py) and [`example2.py`](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example2.py) using black. Compare to your own reformatted files.**
+
 ## Black configuration
 Sometimes you only want to check what black would actually reformat. In order to do so, run
 ```
-black Material_Part2_Formatter/example1.py --diff
+black Material_Part3_Formatter/example1.py --diff
 ```
 or
 ```
-black Material_Part2_Formatter/example1.py --diff --color
+black Material_Part3_Formatter/example1.py --diff --color
 ```
+**Task 2: Try this out with your own reformatted files from Part 1 of this course (PEP styleguide).**
 
 ## Black with jupyter notebooks
 To use black with jupyter notebooks, you need to install the extension using
 ```
-pip install 'black[jupyter]'
+pip install black[jupyter]
 ```
+
+**Task 3: Try out the notebook extension with [this example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example_jupyter.ipynb).**
 
 
 ## Black with VSCode
 If you are using an IDE, specifically [Visual Studio Code](https://code.visualstudio.com/), you can set up black as the default formatter for your `*.py` files. Follow the instructions provided [here](https://dev.to/adamlombard/how-to-use-the-black-python-code-formatter-in-vscode-3lo0).
 
-For more tipps and tricks, see [this page](https://code.visualstudio.com/docs/python/editing).
+For more tips and tricks, see [this page](https://code.visualstudio.com/docs/python/editing).
