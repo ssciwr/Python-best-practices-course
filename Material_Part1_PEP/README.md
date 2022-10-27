@@ -21,6 +21,7 @@ Make use of indentation when using continuation lines:
 
         foo = long_function_name(var_one, var_two,
                                  var_three, var_four)
+
     instead of 
 
         foo = long_function_name(var_one, var_two,
@@ -134,12 +135,24 @@ Make use of indentation when using continuation lines:
 ## What is PEP 257?
 
 [PEP 257](https://peps.python.org/pep-0257/) specifies styling of Python docstrings.
-Docstrings are the descriptive string literals that you should include directly after the definition of a function, class or method.
+Docstrings are the descriptive string literals that you should include directly after the definition of a function, class or method. This string becomes the `__doc__` special attribute of that object.
 
 For example:
+```
+def area_circ(r_in ):
+    """Calculates the area of a circle with given radius.
 
+    :Input: The radius of the circle (float, >=0).
+    :Returns: The area of the circle (float)."""
+```
 
-## PEP 257 summary
+Rules for docstrings:
+- always use triple quotes `"""`
+- no blank line before or after the docstring
+- docstring is a phrase ending in a period - do `"""Calculate the area of a circle with given radius."""` don't `"""radius of a circle"""`
+- docstring describes effect as command and not a description- do `"""Calculate ...` don't `"""Calculates ...`
+- don't reiterate function/method parameters
+- you may use multi-line docstrings that include a short description, a blank line, and then a more elaborate summary
 
 ## PEP 20
 
