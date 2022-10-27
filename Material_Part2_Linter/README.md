@@ -84,7 +84,42 @@ flake8 Material_Part1_PEP
 ```
 **Task: Run the linter on your previously formatted code to see if you have missed any deviations in code style or obvious bugs.**
 
-## Excurse: Flake8 for notebooks
+## Flake8 for jupyter notebooks
+To lint your jupyter notebooks using flake8, install the extension using
+```
+pip install flake8-nb
+```
+To run flake8-nb, simply execute
+```
+flake8-nb Material_Part2_Linter/example_jupyter.ipynb
+```
+or any other file name or path (if you just provide a path, all python source and notebook files in the given directory will be checked).
 
+### Default reporting of flake8-nb
+The default reporting of issues with flake8-nb is by referencing the execution count. So if an issue is highlighted in executed cell #2, then flake8-nb will report it as
+```
+Material_Part2_Linter/example_jupyter.ipynb#In[2]:1:1: E265 block comment should start with '# '
+```
+The `[2]` refers to the execution count cell #2, and the following two numbers `[2]:1:1:` are the line and position number (so line 1, first position on that line).
 
+If you have not executed any of the cells (so your notebook kernel is clean and also all output has been cleared/not yet been generated), then the reporting will show an empty `[ ]`.
 
+### Custom reporting of flake8-nb
+
+If you prefer to instead get the code cell count number (which can be more intuitive), then you need to run
+```
+flake8_nb --notebook-cell-format '{nb_path}:code_cell#{code_cell_count}' Material_Part2_Linter/example_jupyter.ipynb 
+```
+which will result in 
+```
+Material_Part2_Linter/example_jupyter.ipynb:code_cell#2:1:1: E265 block comment should start with '# '
+```
+for the same error. `#2:1:1` refers to cell #2, line 1 and position 1.
+
+### Setup file for flake8-nb
+As flake8-nb is basically an extension for flake8, you can also provide a configuration file for the notebook linting. This file will be called `.flake8_nb`. For example, if you want to set the custom reporting for all the files in your repo, you would put
+```
+[flake8_nb]
+notebook_cell_format = '{nb_path}:code_cell#{code_cell_count}'
+```
+in that file. Similarly, you can provide all the same options as in the `.flake8` configuration file. 

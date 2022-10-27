@@ -1,0 +1,2 @@
+[flake8_nb]
+notebook_cell_format = '{nb_path}:code_cell#{code_cell_count}'

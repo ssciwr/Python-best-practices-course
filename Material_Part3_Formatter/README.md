@@ -28,7 +28,13 @@ black Material_Part2_Formatter/example1.py --diff --color
 ```
 
 ## Black with jupyter notebooks
-
+To use black with jupyter notebooks, you need to install the extension using
 ```
 pip install 'black[jupyter]'
 ```
+
+
+## Black with VSCode
+If you are using an IDE, specifically [Visual Studio Code](https://code.visualstudio.com/), you can set up black as the default formatter for your `*.py` files. Follow the instructions provided [here](https://dev.to/adamlombard/how-to-use-the-black-python-code-formatter-in-vscode-3lo0).
+
+For more tipps and tricks, see [this page](https://code.visualstudio.com/docs/python/editing).
