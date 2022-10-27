@@ -1,4 +1,4 @@
-# Code alignment
+# 1. Code alignment
 
 Which of the below alignments are correct?
 
@@ -7,6 +7,7 @@ Which of the below alignments are correct?
 abs_area = area_A + area_B +
   area_C + area_D
 ```
+
 - [ ] b
 ```
 abs_area = area_A + area_B 
@@ -18,11 +19,13 @@ abs_area = area_A + area_B
 result = my_function(area_A, area_B, 
     area_C, area_D)
 ```
+
 - [ ] d
 ```
 result = my_function(area_A, area_B, 
                      area_C, area_D)
 ```
+
 - [ ] e
 ```
 result = my_function(
@@ -31,7 +34,7 @@ result = my_function(
     )
 ```
 
-# Naming conventions
+# 2. Naming conventions
 
 Which of the below naming conventions are correct?  
 
@@ -60,11 +63,19 @@ Constants:
 - [ ] d `T = 0.1`  
 
 Other:  
-- [ ] a ` list = my_areas`
-- [ ] b ` list_ = my_areas`
-- [ ] c ` __list__ = my_areas`
-- [ ] d ` _list = my_areas`  
+- [ ] a `list = my_areas`
+- [ ] b `list_ = my_areas`
+- [ ] c `__list__ = my_areas`
+- [ ] d `_list = my_areas`  
 
 Modules:  
+- [ ] a `Numerical.py`
+- [ ] b `numerical.py`
+- [ ] c `numerical_analysis.py`
+- [ ] d `numerical-analysis.py`
 
 Packages:  
+- [ ] a `MyCoolPackage`
+- [ ] b `my-cool-package`
+- [ ] c `my_cool_package`
+- [ ] d `analysator`

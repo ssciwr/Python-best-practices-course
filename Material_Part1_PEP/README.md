@@ -19,12 +19,13 @@ PEP 8 recommends lines no longer than 79 characters, but 90 is also a good numbe
 1. Alignment of code  
 Make use of indentation when using continuation lines:  
 
-                foo = long_function_name(var_one, var_two,
+        foo = long_function_name(var_one, var_two,
                                  var_three, var_four)
     instead of 
 
         foo = long_function_name(var_one, var_two,
             var_three, var_four)
+
     You may also use hanging indents
 
         foo = long_function_name(
@@ -37,6 +38,7 @@ Make use of indentation when using continuation lines:
           + (dividends - qualified_dividends)
           - ira_deduction
           - student_loan_interest)
+
     instead of  
 
         income = (gross_wages +
@@ -59,6 +61,7 @@ Make use of indentation when using continuation lines:
 
                 def goodbye():
                     print("See ya!")    
+
         instead of
 
                 import os
@@ -68,6 +71,7 @@ Make use of indentation when using continuation lines:
 
                 def goodbye():
                     print("See ya!")
+
         and
 
                 def something():
@@ -81,6 +85,7 @@ Make use of indentation when using continuation lines:
 
                     def some_other():
                         pass
+
     instead of 
 
             def something():
@@ -96,6 +101,7 @@ Make use of indentation when using continuation lines:
 
         import os
         import sys
+
     and not
 
         import os, sys
@@ -123,11 +129,15 @@ Make use of indentation when using continuation lines:
 
 **Task 1: Let's take a look at some [examples](./PEP_right_or_wrong.md).**
 
-**Task 2: Work through the examples [in this folder](.). Correct the issues and (i) stage, commit and push the changes to your fork of the course repo, then open a pull request with respect to the original repository - then I can see the changes. (ii) Send me your changed files via email.**
+**Task 2: Work through the three examples [in this folder](https://github.com/ssciwr/Python-best-practices-course/tree/main/Material_Part1_PEP). Correct the issues and (i) stage, commit and push the changes to your fork of the course repo, then open a pull request with respect to the original repository - then I can see the changes. (ii) Send me your changed files via email.**
 
 ## What is PEP 257?
 
 [PEP 257](https://peps.python.org/pep-0257/) specifies styling of Python docstrings.
+Docstrings are the descriptive string literals that you should include directly after the definition of a function, class or method.
+
+For example:
+
 
 ## PEP 257 summary
 
