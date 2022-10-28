@@ -8,4 +8,13 @@ if __name__ == "__main__"
 ```
 **Why?** Because, if you import your code as a module, all code that is not contained in a function or class will be run. Now, if you directly run the module,`__name__` will be set to `"__main__"`. But if the module is imported, `__name__` is set to the module's name. See the examples [module1.py](module1.py) and [module2.py](module2.py).
 
-**Task:** Run the code in `module1.py` and `module2.py` and see what is run upon import and how `__name__` changes.
+**Task 1:** Run the code in `module1.py` and `module2.py` and see what is run upon import and how `__name__` changes.
+
+## Examples 
+
+### Ternary Conditionals
+
+
+### Demonstrations
+
+I will demonstrate how to improve the readability in some code snippets.

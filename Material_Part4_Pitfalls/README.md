@@ -2,7 +2,9 @@
 
 ## Instantiation of mutable default keyword arguments in function calls
 
-Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different. Solution: Only provide non-mutable default arguments. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/mutable_default.py).
+Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different. 
+
+**Solution**: Only provide non-mutable default arguments. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/mutable_default.py).
 
 ## Naming the module
 
@@ -26,3 +28,5 @@ Assigning a variable within a function shadows any assignment that may have happ
 Python uses late binding, resulting that in closures variables are only looked up once the inner function is called. 
 
 **Solution**: Make sure the referenced variables are either passed to the inner function or are set correctly in the surrounding scope. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/closure.py).
+
+**Task 1: Experiment with the different modules in this section and reproduce the error and the solution.**
