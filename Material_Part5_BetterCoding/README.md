@@ -18,7 +18,21 @@ if __name__ == "__main__"
 
 I will demonstrate how to improve the readability in some code snippets.
 
-## Further Examples 
-Here are further examples, mainly based on [this video](https://youtu.be/C-gEQdGVXbk). Feel free to take a look if any of these suggestions may help you write better code in the future.
+## Further examples 
+Here are further examples, loosely based on [this video](https://youtu.be/C-gEQdGVXbk). Feel free to take a look if any of these suggestions may help you write better code in the future. **Please not that brevity has its limit and sometimes using more lines to write a piece of code can actually be better**: If it helps to improve understanding of the code.
 
-### Ternary Conditionals
+### Ternary conditionals
+
+Use ternary conditionals to simplify `if ... else` statements. [Example]()
+
+### Context managers
+ 
+Use context managers to not have to worry about tear-down methods, like closing a file. Using `with open`, for example, automatically closes the file after it has been read. [Example]()
+
+### Using enumerate
+
+Use `enumerate` when you want to access both the list item and its index at the same time when iterating. [Example]()
+
+### Using zip
+
+Use `zip` if you want to iterate over two lists simultaneously. [Example]()
