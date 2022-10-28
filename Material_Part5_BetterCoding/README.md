@@ -10,11 +10,15 @@ if __name__ == "__main__"
 
 **Task 1:** Run the code in `module1.py` and `module2.py` and see what is run upon import and how `__name__` changes.
 
-## Examples 
-
-### Ternary Conditionals
 
 
-### Demonstrations
+
+
+## Demonstrations
 
 I will demonstrate how to improve the readability in some code snippets.
+
+## Further Examples 
+Here are further examples, mainly based on [this video](https://youtu.be/C-gEQdGVXbk). Feel free to take a look if any of these suggestions may help you write better code in the future.
+
+### Ternary Conditionals
