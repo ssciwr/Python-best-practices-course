@@ -29,5 +29,9 @@ Course date: Nov 8th 2022, 9:00AM - 1:00PM
 1. [PEP recommendations](Material_Part1_PEP/README.md)
 1. [Linting](Material_Part2_Linter/README.md)
 1. [Code formatting](Material_Part3_Formatter/README.md)
-1. Write better code: [Pitfalls](Material_part4_Pitfalls)
-1. Write better code: [Examples](Material_part5_Examples)
+1. Write better code: [Pitfalls](Material_Part4_Pitfalls)
+1. Write better code: [Examples](Material_Part5_BetterCoding)
+
+## Additional Topics
+
+For general coding best practices, you should always put your source code under version control, implement tests and a documentation, and also add a license to your code. It is not possible to discuss all of this in a short course - here we only discuss Python-specific content. The SSC offers [tailored courses](https://ssc.iwr.uni-heidelberg.de/events) that you can participate in. There is also a [block course](https://ssciwr.github.io/sustainable_development_course/) that touches on all these aspects; the block course takes place every year in early March.
