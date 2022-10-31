@@ -23,16 +23,16 @@ Here are further examples, loosely based on [this video](https://youtu.be/C-gEQd
 
 ### Ternary conditionals
 
-Use ternary conditionals to simplify `if ... else` statements. [Example]()
+Use ternary conditionals to simplify `if ... else` statements. [Example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part5_BetterCoding/examples/ternary.py)
 
 ### Context managers
  
-Use context managers to not have to worry about tear-down methods, like closing a file. Using `with open`, for example, automatically closes the file after it has been read. [Example]()
+Use context managers to not have to worry about tear-down methods, like closing a file. Using `with open`, for example, automatically closes the file after it has been read. [Example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part5_BetterCoding/examples/context_managers.py)
 
 ### Using enumerate
 
-Use `enumerate` when you want to access both the list item and its index at the same time when iterating. [Example]()
+Use `enumerate` when you want to access both the list item and its index at the same time when iterating. [Example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part5_BetterCoding/examples/enumerate.py)
 
 ### Using zip
 
-Use `zip` if you want to iterate over two lists simultaneously. [Example]()
+Use `zip` if you want to iterate over two lists simultaneously. [Example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part5_BetterCoding/examples/use_zip.py)
