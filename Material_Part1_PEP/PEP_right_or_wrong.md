@@ -58,8 +58,8 @@ Constants:
 - [ ] d `T = 0.1`  
 
 Other:  
-- [x] a `list = my_areas`
-- [ ] b `list_ = my_areas`
+- [ ] a `list = my_areas`
+- [x] b `list_ = my_areas`
 - [ ] c `__list__ = my_areas`
 - [ ] d `_list = my_areas`  
 
