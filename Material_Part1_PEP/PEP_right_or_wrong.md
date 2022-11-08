@@ -12,17 +12,19 @@ Which of the below alignments are correct?
         abs_area = area_A + area_B 
             + area_C + area_D
 
+I think there must be a backslash, otherwise wrong syntax?!
+
 - [ ] c
 
         result = my_function(area_A, area_B, 
             area_C, area_D)
 
-- [ ] d
+- [x] d
 
         result = my_function(area_A, area_B, 
                              area_C, area_D)
 
-- [ ] e
+- [x] e
 
         result = my_function(
             area_A, area_B, 
@@ -37,10 +39,10 @@ Classes:
 - [ ] a `class my-first-analysis:` 
 - [ ] b `class my_first_analysis:` 
 - [ ] c `class Myfirstanalysis:` 
-- [ ] d `class MyFirstAnalysis:`   
+- [x] d `class MyFirstAnalysis:`   
 
 Functions:  
-- [ ] a `def calc_area(x):` 
+- [x] a `def calc_area(x):` 
 - [ ] b `def calc-area(x):` 
 - [ ] c `def calcarea(x):` 
 - [ ] d `def Calc_area(x):`   
@@ -49,28 +51,32 @@ Variables:
 - [ ] a `O = abs(x)`
 - [ ] b `I = abs(x)`
 - [ ] c `l = abs(x)`
-- [ ] d `abs_x = abs(x)`  
+- [x] d `abs_x = abs(x)`  
 
 Constants:  
-- [ ] a `THRESHOLD = 0.1`
+- [x] a `THRESHOLD = 0.1`
 - [ ] b `threshold = 0.1`
 - [ ] c `Threshold = 0.1`
 - [ ] d `T = 0.1`  
 
+d is ok, but not very informative
+
 Other:  
 - [ ] a `list = my_areas`
-- [ ] b `list_ = my_areas`
+- [x] b `list_ = my_areas`
 - [ ] c `__list__ = my_areas`
 - [ ] d `_list = my_areas`  
+
+avoid clash
 
 Modules:  
 - [ ] a `Numerical.py`
 - [ ] b `numerical.py`
-- [ ] c `numerical_analysis.py`
+- [x] c `numerical_analysis.py`
 - [ ] d `numerical-analysis.py`
 
 Packages:  
 - [ ] a `MyCoolPackage`
 - [ ] b `my-cool-package`
 - [ ] c `my_cool_package`
-- [ ] d `analysator`
+- [x] d `analysator`
