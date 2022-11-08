@@ -13,14 +13,21 @@ def ingredients2(ingredient, all_ingredients=None):
     all_ingredients.append(ingredient)
     print(all_ingredients)
 
-def myfunc(a={"b": 0}):
+
+def myfunc(a=None):
+    if a is None:
+        a = {"b": 0}
     a["b"] += 5
     print(a)
 
-def display_time(time_to_print=datetime.now()):
-    print(time_to_print.strftime('%B %d, %Y %H:%M:%S'))
 
-if __name__=="__main__":
+def display_time(time_to_print=None):
+    if time_to_print is None:
+        time_to_print = datetime.now()
+    print(time_to_print.strftime("%B %d, %Y %H:%M:%S"))
+
+
+if __name__ == "__main__":
     # method 1
     # a list is mutable
     print(ingredients1.__defaults__)
