@@ -28,6 +28,7 @@ def list_categories(mydict: dict) -> list:
             mylist.append((main_cat_key, sub_cat_key))
     return mylist
 
+# Question: What is the advantage/disadvantage of this version over looping1.py?
 
 if __name__ == "__main__":
     mylist = list_categories(example_dict)
