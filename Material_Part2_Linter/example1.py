@@ -2,13 +2,13 @@ import os
 import glob
 
 
-
 # find all png files in a folder
-def find_files(path=None, pattern="*.png", recursive=True, limit = 20) -> list:
+def find_files(path=None, pattern="*.png", recursive=True, limit=20) -> list:
     """Find image files on the file system.
 
     :param path:
-        The base directory where we are looking for the images. Defaults to None, which uses the XDG data directory if set or the current working directory otherwise.
+        The base directory where we are looking for the images. Defaults to None, which uses the XDG data directory if
+         set or the current working directory otherwise.
     :param pattern:
         The naming pattern that the filename should match. Defaults to
         "*.png". Can be used to allow other patterns or to only include
@@ -22,13 +22,13 @@ def find_files(path=None, pattern="*.png", recursive=True, limit = 20) -> list:
     if path is None:
         path = os.environ.get("XDG_DATA_HOME", ".")
 
-    result=list(glob.glob(f"{path}/{pattern}", recursive=recursive))
+    result = list(glob.glob(f"{path}/{pattern}", recursive=recursive))
 
     if limit is not None:
         result = result[:limit]
 
-    return result 
+    return result
 
-if __name__=="__main__":
+if __name__ == "__main__":
     list = find_files(path="./data/")
     print("Found files {}".format(list))
