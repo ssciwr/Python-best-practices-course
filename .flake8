@@ -1,3 +1,5 @@
 [flake8]
 ignore = E303, E305
 max-line-length = 120
+exclude = 
+    *.md

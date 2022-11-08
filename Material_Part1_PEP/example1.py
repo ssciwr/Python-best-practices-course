@@ -26,9 +26,8 @@ def find_files(path=None, pattern="*.png", recursive=True, limit = 20) -> list:
 
     if limit is not None:
         result = result[:limit]
+    return result
 
-    return result 
-
-if __name__=="__main__":
+if __name__ == "__main__":
     list = find_files(path="./data/")
     print("Found files {}".format(list))
