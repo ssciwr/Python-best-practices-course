@@ -4,13 +4,13 @@ Which of the below alignments are correct?
 
 - [ ] a
 
-        abs_area = area_A + area_B +
-          area_C + area_D
+        abs_area = (area_A + area_B +
+          area_C + area_D)
 
 - [ ] b
 
-        abs_area = area_A + area_B 
-            + area_C + area_D
+        abs_area = (area_A + area_B 
+            + area_C + area_D)
 
 - [ ] c
 
