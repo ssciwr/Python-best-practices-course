@@ -10,10 +10,6 @@ if __name__ == "__main__"
 
 **Task 1:** Run the code in `module1.py` and `module2.py` and see what is run upon import and how `__name__` changes.
 
-
-
-
-
 ## Demonstrations
 
 I will demonstrate how to improve the readability in some code snippets.
