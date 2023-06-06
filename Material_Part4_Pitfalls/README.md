@@ -1,5 +1,11 @@
 # Pitfalls: Common ways to introduce bugs in your Python code
 
+## Shallow and deep copies
+
+When copying lists and other mutable variable types like dictionarys, using an `=` sign only points the new variable to the same position as the initial one. Changing one then automatically changes the other.
+
+**Solution**: Use `copy` or `deepcopy` instead to create copies of objects.
+
 ## Instantiation of mutable default keyword arguments in function calls
 
 Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different. 

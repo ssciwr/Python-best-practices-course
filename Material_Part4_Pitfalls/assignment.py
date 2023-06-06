@@ -9,10 +9,10 @@ print(mylist)
 
 mylist2 = [1, 2, 3]
 
-def myfunc2():
+def myfunc2(mylist2):
     mylist2 += "x"
 
-# myfunc2()
+myfunc2(mylist2)
 print(mylist2)
 
 def myfunc3():
