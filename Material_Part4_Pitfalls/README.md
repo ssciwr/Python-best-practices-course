@@ -4,7 +4,7 @@
 
 When copying lists and other mutable variable types like dictionarys, using an `=` sign only points the new variable to the same position in memory as the initial one. Changing one then automatically changes the other.
 
-*Example*: (https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/copy_list.py)
+[*Example*](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/copy_list.py)
 
 **Solution**: Use `copy` or `deepcopy` instead to create copies of objects.
 
@@ -12,7 +12,9 @@ When copying lists and other mutable variable types like dictionarys, using an `
 
 Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different. 
 
-**Solution**: Only provide non-mutable default arguments. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/mutable_default.py).
+[*Example*](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/mutable_default.py)
+
+**Solution**: Only provide non-mutable default arguments..
 
 ## Naming the module
 
