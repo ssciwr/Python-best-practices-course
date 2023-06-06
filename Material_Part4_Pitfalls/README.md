@@ -36,11 +36,17 @@ Iterators and generators can be exhausted, meaning you can only use them once.
 
 Assigning a variable within a function shadows any assignment that may have happened in an outer scope. 
 
-**Solution**: Pass the variable as an argument into the inner scope or use the return value of a new assignment. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/assignment.py).
+[*Example*](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/assignment.py)
+
+**Solution**: Pass the variable as an argument into the inner scope or use the return value of a new assignment.
 
 ## Closure variable binding
+
 Python uses late binding, resulting that in closures variables are only looked up once the inner function is called. 
 
-**Solution**: Make sure the referenced variables are either passed to the inner function or are set correctly in the surrounding scope. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/closure.py).
+[*Example*](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/closure.py).
+
+
+**Solution**: Make sure the referenced variables are either passed to the inner function or are set correctly in the surrounding scope.
 
 **Task 1: Experiment with the different modules in this section and reproduce the error and the solution.**
