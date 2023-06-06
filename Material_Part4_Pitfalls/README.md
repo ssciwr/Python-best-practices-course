@@ -28,7 +28,9 @@ A source of errors can be naming a module the same as another module that is imp
 
 Iterators and generators can be exhausted, meaning you can only use them once. 
 
-**Solution**: If you create an iterator or a generator and you need it more than once you need to save it first. As in the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/exhaust_iterators.py) provided, the iterator is created using `zip`, and can be saved in a `list`.
+[*Example*](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/exhaust_iterators.py)
+
+**Solution**: If you create an iterator or a generator and you need it more than once you need to save it first. As in the example provided, the iterator is created using `zip`, and can be saved in a `list`.
 
 ## Variable assignment in different scopes
 

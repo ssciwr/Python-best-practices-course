@@ -1,10 +1,10 @@
 days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"]
 lunch = ["Pizza", "Salad", "Pasta", "Sushi", "Sandwich"]
 
-# menu = zip(days, lunch)
-menu = list(zip(days, lunch))
+menu = zip(days, lunch)
+# menu = list(zip(days, lunch))
 
-print(list(menu))
+# print(list(menu))
 
 
 for item in menu:
