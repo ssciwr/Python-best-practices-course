@@ -20,9 +20,9 @@ After the course participants will be able to
 - Avoid bugs through best practices for example in passing keyword arguments
 
 ## Time and place
-The course takes place online. A link will be sent to all registered participants.
+The course takes place in the Mathematikon, room 5/104 (conference room).
 
-Course date: Nov 8th 2022, 9:00AM - 1:00PM 
+Course date: June 7th 2023, 9:00AM - 1:00PM 
 
 ## Course content
 
