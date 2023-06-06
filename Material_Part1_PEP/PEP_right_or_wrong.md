@@ -7,7 +7,7 @@ Which of the below alignments are correct?
         abs_area = area_A + area_B +
           area_C + area_D
 
-- [x] b
+- [ ] b
 
         abs_area = area_A + area_B 
             + area_C + area_D
