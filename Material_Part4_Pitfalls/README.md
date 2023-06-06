@@ -20,7 +20,9 @@ Default arguments are only evaluated once: At the time the function is created. 
 
 A source of errors can be naming a module the same as another module that is imported, in this example the module is named `math.py` but also imports math from the standard Python library; and function calls using methods from the math module will fail, as Python will look for those in the `math.py` file. 
 
-**Solution**: Name your module file different than the modules that you are importing. See the [example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/math.py).
+[*Example*](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part4_Pitfalls/math.py)
+
+**Solution**: Name your module file different than the modules that you are importing.
 
 ## Exhausting iterators
 
