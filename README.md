@@ -9,8 +9,7 @@ Inga Ulusoy, October 2022
 Python has rapidly advanced to the most popular programming language in science and research. From data analysis to simulation and preparation of publications, all can be done in Python with appropriate libraries and implementing own modules. We will discuss most important Python Enhancement Proposals (PEP) and how these can help you write cleaner code. You will learn how to use a code linter and code formatter. Common pitfalls in Python will be explained with examples. We will demonstrate typical “bad programming” and how to code the examples in a more pythonic way.
 
 ## Prerequisites
-Basic Python knowledge is required. Participants need a laptop/PC with camera and
-microphone.
+Basic Python knowledge is required. Participants need a laptop/PC with a working Python installation.
 
 ## Learning objectives
 After the course participants will be able to
@@ -34,4 +33,4 @@ Course date: June 7th 2023, 9:00AM - 1:00PM
 
 ## Additional Topics
 
-For general coding best practices, you should always put your source code under version control, implement tests and a documentation, and also add a license to your code. It is not possible to discuss all of this in a short course - here we only discuss Python-specific content. The SSC offers [tailored courses](https://ssc.iwr.uni-heidelberg.de/events) that you can participate in. There is also a [block course](https://ssciwr.github.io/sustainable_development_course/) that touches on all these aspects; the block course takes place every year in early March.
+For general coding best practices, you should always put your source code under version control, implement tests and a documentation, and also add a license to your code. It is not possible to discuss all of this in a short course - here we only cover very Python-specific content. The SSC offers [tailored courses](https://ssc.uni-heidelberg.de/events) that you can participate in. There is also a [block course](https://ssciwr.github.io/sustainable_development_course/) that touches on all these aspects; the block course takes place every year in early March.
