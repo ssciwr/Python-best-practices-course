@@ -28,15 +28,12 @@ or
 ```
 black Material_Part3_Formatter/example1.py --diff --color
 ```
-**Task 2: Try this out with your own reformatted files from Part 1 of this course (PEP styleguide).**
+**Task 2: Try this out with your own reformatted files from Part 1 of this course (PEP style guide).**
 
 ## Black with jupyter notebooks
-To use black with jupyter notebooks, you need to install the extension using
-```
-pip install black[jupyter]
-```
+The new versions of black directly allow you to run it on jupyter notebooks,
 
-**Task 3: Try out the notebook extension with [this example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example_jupyter.ipynb).**
+**Task 3: Try out reformatting notebooks with [this example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example_jupyter.ipynb).**
 
 
 ## Black with VSCode
