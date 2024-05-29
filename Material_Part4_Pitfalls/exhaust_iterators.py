@@ -4,7 +4,7 @@ lunch = ["Pizza", "Salad", "Pasta", "Sushi", "Sandwich"]
 # menu = zip(days, lunch)
 menu = list(zip(days, lunch))
 
-print(list(menu))
+# print(list(menu))
 
 
 for item in menu:
