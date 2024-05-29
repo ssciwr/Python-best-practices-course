@@ -1,7 +1,0 @@
-flake8
-black
-numpy
-pandas
-flake8-nb
-setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
-jupyter
