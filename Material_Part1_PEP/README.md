@@ -128,9 +128,13 @@ Make use of indentation when using continuation lines:
     - use two leading underscores to invoke name mangling for attributes that should not be used in subclasses of the parent class (`__only_parent`)
     - double leading and trailing underscores for "magic" objects (dunder methods) - `__init__`, `__str__`
 
-**Task 1: Let's take a look at some [examples](./PEP_right_or_wrong.md).**
+**Task 1: [GitHub assignment PEP right or wrong?](https://classroom.github.com/a/OQSBs2Ey)**
 
-**Task 2: Work through the three examples [in this folder](https://github.com/ssciwr/Python-best-practices-course/tree/main/Material_Part1_PEP). Correct the issues and (i) stage, commit and push the changes to your fork of the course repo, then open a pull request with respect to the original repository - then I can see the changes. (ii) Send me your changed files via email.**
+Please checkout the assignment repo and mark the answers in the file `chapter1/PEP_right_or_wrong.md` using markdown. Commit your answer to a new branch and open a pull request. If the autograding/CI checks succeed, you have marked the correct answers and can merge the pull request with main to submit your assignment.
+
+**Task 2: [GitHub assignment PEP fixme's](https://classroom.github.com/a/gH7zaDzE)**
+
+Please checkout the assignment repo and correct the files `chapter1/example1.py`, `chapter1/example2.py` and `chapter3/example1.py` for stylistic and other errors that contradict PEP 8 recommendations. Commit your changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have resolved all issues and can merge the pull request with main to submit your assignment.
 
 ## What is PEP 257?
 
