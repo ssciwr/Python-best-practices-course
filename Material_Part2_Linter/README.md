@@ -3,7 +3,7 @@ A code linter is there to highlight issues with the code that do not conform wit
 
 **Task 3: [GitHub assignment code linter and formatter](https://classroom.github.com/a/8Naj1QMJ)**
 
-Please checkout the assignment repo and follow through with the commands below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have marked the correct answers and can merge the pull request with main to submit your assignment.
+Please checkout the assignment repo and follow through with the commands below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
 
 ## Flake8
 We will be using [flake8](https://flake8.pycqa.org/en/latest/), a popular linter for Python code.  
