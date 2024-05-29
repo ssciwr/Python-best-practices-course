@@ -2,7 +2,6 @@ import os
 import glob
 
 
-
 # find all png files in a folder
 def find_files(path=None, pattern="*.png", recursive=True, limit = 20) -> list:
     """Find image files on the file system.

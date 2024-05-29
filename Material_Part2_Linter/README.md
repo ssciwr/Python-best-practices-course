@@ -1,5 +1,5 @@
 # Linter
-A code linter is there to highlight issues with the code that do not conform with a style guide, and that may lead to errors when interpreted or compiled. For python, a code linter makes sure that the code conforms with PEP 8 standards.
+A code linter is there to highlight issues with the code that do not conform with a style guide, and that may lead to errors when interpreted or compiled. For Python, a code linter makes sure that the code conforms with PEP 8 standards.
 
 
 ## Flake8
@@ -56,7 +56,7 @@ flake8 --ignore E303,E305 Material_Part2_Linter/example1.py
 **Task 1: Try out all the commands and familiarize yourself with the output.**
 
 ## Configuring flake8
-In some cases, you may want to ignore flake8 errors or set limits differently, for example if you want to increase your line length to 120. You can reconfiger flake8 in a [number of different ways](https://flake8.pycqa.org/en/latest/user/configuration.html), and we will be using a flake8 configuration file. 
+In some cases, you may want to ignore flake8 errors or set limits differently, for example if you want to increase your line length to 120. You can reconfigure flake8 in a [number of different ways](https://flake8.pycqa.org/en/latest/user/configuration.html), and we will be using a flake8 configuration file. 
 
 In order to do so, place a `.flake8` file in the root of your folder. The top of the file contains the line `[flake8]` - see [the example](https://github.com/ssciwr/Python-best-practices-course/blob/main/.flake8). A list of ignored errors can be included following the `ignore` option.
 
