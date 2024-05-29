@@ -5,35 +5,36 @@ You first need to install black using
 ```
 pip install black
 ```
+If you installed the packages via the `requirements.txt` file from your assignment repo, then you already have it installed.
 You can then use black running it as 
 ```
-black Material_Part3_Formatter/example1.py
+black chapter2_3/example1.py
 ```
 Please note that the formatter reformats the file in-place, that means, substituting the content of the original file!
 
 Now you can check with flake8 if the file is compliant with PEP 8:
 ```
-flake8 Material_Part3_Formatter/example1.py
+flake8 chapter2_3/example1.py
 ```
 You will notice that flake8 is not returning errors except a line length error for one of the comment lines: Note that black does not reformat comments other than inserting proper whitespace before and after the #.
 
-**Task 1: Reformat [`example1.py`](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example1.py) and [`example2.py`](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example2.py) using black. Compare to your own reformatted files.**
+**Subtask (iii): Reformat `example1.py` and `example2.py` using black. Compare to your own reformatted files from the previous assignemt.**
 
 ## Black configuration
 Sometimes you only want to check what black would actually reformat. In order to do so, run
 ```
-black Material_Part3_Formatter/example1.py --diff
+black chapter2_3//example1.py --diff
 ```
 or
 ```
-black Material_Part3_Formatter/example1.py --diff --color
+black chapter2_3/example1.py --diff --color
 ```
-**Task 2: Try this out with your own reformatted files from Part 1 of this course (PEP style guide).**
+**Task 3: Now you should have completed all edits on your assignment repo and should be able to submit the results (if the autograding and CI do not raise any issues).**
 
 ## Black with jupyter notebooks
 The new versions of black directly allow you to run it on jupyter notebooks,
 
-**Task 3: Try out reformatting notebooks with [this example](https://github.com/ssciwr/Python-best-practices-course/blob/main/Material_Part3_Formatter/example_jupyter.ipynb).**
+**Subtask (iv): Try out reformatting notebooks with `example_jupyter.ipynb`.**
 
 
 ## Black with VSCode
