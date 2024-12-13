@@ -1,7 +1,7 @@
 # Linter
 A code linter is there to highlight issues with the code that do not conform with a style guide, and that may lead to errors when interpreted or compiled. For Python, a code linter makes sure that the code conforms with PEP 8 standards.
 
-**Task 3: [GitHub assignment code linter and formatter](https://classroom.github.com/a/8Naj1QMJ)**
+**Task 2: [GitHub assignment code linter](https://classroom.github.com/a/d0dI5zx_)**
 
 Please checkout the assignment repo and follow through with the commands below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
 
@@ -12,7 +12,7 @@ First, you need to install flake8. You can do so by typing
 ```
 pip install flake8
 ```
-in your terminal. Alternatively, you can install it via the `requirements.txt` in the assignment repo"
+in your terminal. Alternatively, you can install it via the `requirements.txt` in the assignment repo
 ```
 pip install -r requirements.txt
 ```
