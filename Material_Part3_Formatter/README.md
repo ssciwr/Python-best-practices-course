@@ -18,7 +18,9 @@ flake8 chapter2_3/example1.py
 ```
 You will notice that flake8 is not returning errors except a line length error for one of the comment lines: Note that black does not reformat comments other than inserting proper whitespace before and after the #.
 
-**Subtask (iii): Reformat `example1.py` and `example2.py` using black. Compare to your own reformatted files from the previous assignemt.**
+**Task 3: [GitHub assignment code formatter](https://classroom.github.com/a/nsZ7ryTk)**
+
+**Subtask (i): Reformat `example1.py` and `example2.py` using black. Compare to your own reformatted files from the previous assignemt.**
 
 ## Black configuration
 Sometimes you only want to check what black would actually reformat. In order to do so, run
@@ -29,12 +31,12 @@ or
 ```
 black chapter2_3/example1.py --diff --color
 ```
-**Task 3: Now you should have completed all edits on your assignment repo and should be able to submit the results (if the autograding and CI do not raise any issues).**
+**Now you should have completed all edits on your assignment repo and should be able to submit the results (if the autograding and CI do not raise any issues).**
 
 ## Black with jupyter notebooks
 The new versions of black directly allow you to run it on jupyter notebooks,
 
-**Subtask (iv): Try out reformatting notebooks with `example_jupyter.ipynb`.**
+**Subtask (ii): Try out reformatting notebooks with `example_jupyter.ipynb`.**
 
 
 ## Black with VSCode
