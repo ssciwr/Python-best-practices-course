@@ -1,6 +1,6 @@
 # Pitfalls: Common ways to introduce bugs in your Python code
 
-**Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/N7Scip_G)**
+**Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/XBSxiwZi)**
 
 Please checkout the assignment repo and follow through with the examples and instructions below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
 
