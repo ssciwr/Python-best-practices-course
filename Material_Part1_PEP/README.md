@@ -132,7 +132,7 @@ Make use of indentation when using continuation lines:
 
 Please checkout the assignment repo and mark the answers in the file `README.md` using markdown. Commit your answer to a new branch and open a pull request. If the autograding/CI checks succeed, you have marked the correct answers and can merge the pull request with main to submit your assignment.
 
-**Task 1b: [GitHub assignment PEP fixme's](https://classroom.github.com/a/5GBnRco3)**
+**Task 1b: [GitHub assignment PEP fixme's](https://classroom.github.com/a/xzF_q_qs)**
 
 Please checkout the assignment repo and correct the files `chapter1/example1.py`, `chapter1/example2.py` and `chapter3/example1.py` for stylistic and other errors that contradict PEP 8 recommendations. Commit your changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have resolved all issues and can merge the pull request with main to submit your assignment.
 
