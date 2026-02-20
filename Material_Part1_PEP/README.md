@@ -128,11 +128,11 @@ Make use of indentation when using continuation lines:
     - use two leading underscores to invoke name mangling for attributes that should not be used in subclasses of the parent class (`__only_parent`)
     - double leading and trailing underscores for "magic" objects (dunder methods) - `__init__`, `__str__`
 
-**Task 1a: [GitHub assignment PEP right or wrong?](https://classroom.github.com/a/Vg9Rjdry)**
+**Task 1a: [GitHub assignment PEP right or wrong?](https://classroom.github.com/a/AcPg90Rk)**
 
-Please checkout the assignment repo and mark the answers in the file `chapter1/PEP_right_or_wrong.md` using markdown. Commit your answer to a new branch and open a pull request. If the autograding/CI checks succeed, you have marked the correct answers and can merge the pull request with main to submit your assignment.
+Please checkout the assignment repo and mark the answers in the file `README.md` using markdown. Commit your answer to a new branch and open a pull request. If the autograding/CI checks succeed, you have marked the correct answers and can merge the pull request with main to submit your assignment.
 
-**Task 1b: [GitHub assignment PEP fixme's](https://classroom.github.com/a/zEgcY5ds)**
+**Task 1b: [GitHub assignment PEP fixme's](https://classroom.github.com/a/5GBnRco3)**
 
 Please checkout the assignment repo and correct the files `chapter1/example1.py`, `chapter1/example2.py` and `chapter3/example1.py` for stylistic and other errors that contradict PEP 8 recommendations. Commit your changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have resolved all issues and can merge the pull request with main to submit your assignment.
 
