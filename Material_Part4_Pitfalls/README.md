@@ -2,7 +2,7 @@
 
 **Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/XBSxiwZi)**
 
-Please checkout the assignment repo and follow through with the examples and instructions below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
+Please checkout the assignment repo and follow through with the examples and instructions below. 
 
 ## Naming the module
 
@@ -64,5 +64,3 @@ Python uses late binding, resulting that in closures variables are only looked u
 **Solution**: Make sure the referenced variables are either passed to the inner function or are set correctly in the surrounding scope.
 
 **Subtask (v): Resolve the issue for `chapter4/closure.py`.**
-
-**Task 4: Now you should have completed all edits on your assignment repo and should be able to submit the results (if the autograding and CI do not raise any issues).**

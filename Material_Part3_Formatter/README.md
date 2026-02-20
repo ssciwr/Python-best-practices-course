@@ -5,26 +5,23 @@ Please note that the formatter reformats the file in-place, that means, substitu
 
 Note that black does not reformat comments other than inserting proper whitespace before and after the #.
 
-**Task 3: GitHub assignment code formatter: Use the same repo as from Part 2 - Linter**
+## Using the Ruff formatter
+
+To invoke the Ruff formatter, use
+```
+ruff format
+```
+or 
+```
+ruff format --preview
+```
+similarly to the linter. 
+
+You may also use `ruff check --fix`. This will not reformat all the code, but apply the fixes from linting that can be safely done.
 
 ## Ruff configuration
-Sometimes you only want to check what black would actually reformat. In order to do so, run
-```
-black chapter2_3/example1.py --diff
-```
-or
-```
-black chapter2_3/example1.py --diff --color
-```
-**Now you should have completed all edits on your assignment repo and should be able to submit the results (if the autograding and CI do not raise any issues).**
+You can configure Ruff quite freely, and also use it to format docstrings and markdown files. Take a look [here](https://docs.astral.sh/ruff/formatter/#configuration) at some examples. You may also [configure your IDE](https://docs.astral.sh/ruff/editors/setup/) to lint and format your files using Ruff. It is also great for using in [`pre-commit hooks`](https://docs.astral.sh/ruff/integrations/#pre-commit).
 
-## Black with jupyter notebooks
-The new versions of black directly allow you to run it on jupyter notebooks,
+**Task 3: GitHub assignment code formatter: Use the same repo as from Part 2 - Linter**
 
-**Subtask (ii): Try out reformatting notebooks with `example_jupyter.ipynb`.**
-
-
-## Black with VSCode
-If you are using an IDE, specifically [Visual Studio Code](https://code.visualstudio.com/), you can set up black as the default formatter for your `*.py` files. Follow the instructions provided [here](https://dev.to/adamlombard/how-to-use-the-black-python-code-formatter-in-vscode-3lo0).
-
-For more tips and tricks, see [this page](https://code.visualstudio.com/docs/python/editing).
+Format the code using `ruff format`. Check what it changes. See if you can get the autograding to pass.
