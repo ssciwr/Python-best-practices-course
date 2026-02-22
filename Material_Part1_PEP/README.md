@@ -2,7 +2,7 @@
 
 ## What is a PEP?
 
-Find out about the purpose of PEPs (Python Enhancement Proposals) on the [pep site](https://peps.python.org/pep-0001/). Short answer: These are documents helping to organize the evolution of the Python language in the community.
+Find out about the purpose of PEPs (Python Enhancement Proposals) on the [PEP site](https://peps.python.org/pep-0001/). Short answer: These are documents helping to organize the evolution of the Python language in the community.
 
 You can find a list of PEPs [here](https://peps.python.org/).
 

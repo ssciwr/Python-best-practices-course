@@ -1,10 +1,6 @@
 # Linter
 A code linter is there to highlight issues with the code that do not conform with a style guide, and that may lead to errors when interpreted or compiled. For Python, a code linter makes sure that the code conforms with PEP 8 standards.
 
-**Task 2: [GitHub assignment code linter](https://classroom.github.com/a/d0dI5zx_)**
-
-Please checkout the assignment repo and follow through with the commands below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
-
 ## Ruff
 We will be using [Ruff](https://docs.astral.sh/ruff/linter/), a fast and popular linter for Python code.  
 

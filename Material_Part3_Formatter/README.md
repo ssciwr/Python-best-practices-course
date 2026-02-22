@@ -3,7 +3,7 @@ A code formatter takes care of formatting your code so that it adheres to the st
 
 Please note that the formatter reformats the file in-place, that means, substituting the content of the original file!
 
-Note that black does not reformat comments other than inserting proper whitespace before and after the #.
+Note that the formatter does not reformat comments other than inserting proper whitespace before and after the #.
 
 ## Using the Ruff formatter
 
