@@ -33,4 +33,4 @@ Course date: February 26th 2026, 9:00AM - 1:00PM
 
 ## Additional Topics
 
-For general coding best practices, you should always put your source code under version control, implement tests and a documentation, and also add a license to your code. It is not possible to discuss all of this in a short course - here we only present Python-specific content. The SSC offers [tailored courses](https://www.ssc.uni-heidelberg.de/en/learning/all-courses) that you can participate in. There is also a [block course](https://ssciwr.github.io/sustainable_development_course/) that touches on all these aspects; the block course takes place every year in February/March.
+For general coding best practices, you should always put your source code under version control, implement tests and a documentation, and also add a license to your code. It is not possible to discuss all of this in a short course - here we only present Python-specific content. The SSC offers [tailored courses](https://www.ssc.uni-heidelberg.de/en/learning/all-courses) that you can participate in.
