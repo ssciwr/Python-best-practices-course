@@ -1,6 +1,6 @@
 # Pitfalls: Common ways to introduce bugs in your Python code
 
-**Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/uxjgIb9B)**
+**Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/YRmX1t0j)**
 
 Please checkout the assignment repo and follow through with the examples and instructions below. 
 

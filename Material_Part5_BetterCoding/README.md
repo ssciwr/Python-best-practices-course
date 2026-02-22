@@ -1,6 +1,6 @@
 # Better coding
 
-**Task 5: [GitHub assignment write more readable code using these suggestions](https://classroom.github.com/a/98DEpTgF)**
+**Task 5: [GitHub assignment write more readable code using these suggestions](https://classroom.github.com/a/7Yu9uxax)**
 
 Please checkout the assignment repo and follow through with the examples and instructions below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
 
