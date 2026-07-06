@@ -5,7 +5,7 @@
 Please checkout the assignment repo and follow through with the examples and instructions below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
 
 ## Further examples 
-Here are further examples, loosely based on [this video](https://youtu.be/C-gEQdGVXbk). Feel free to take a look if any of these suggestions may help you write better code in the future. **Please not that brevity has its limit and sometimes using more lines to write a piece of code can actually be better**: If it helps to improve understanding of the code.
+Here are further examples, loosely based on [this video](https://youtu.be/C-gEQdGVXbk). Feel free to take a look if any of these suggestions may help you write better code in the future. **Please note that brevity has its limit and sometimes using more lines to write a piece of code can actually be better**: If it helps to improve understanding of the code.
 
 ## Why you should run code in your module only if `__name__` is `"__main__"`
 

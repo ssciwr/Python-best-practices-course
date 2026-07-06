@@ -109,7 +109,7 @@ Make use of indentation when using continuation lines:
 
 1. String quotes: Do either use `'` or `"` throughout your project - do not mix. For triple-quoted strings, always use `"`, so `"""` instead of `'''`.
 1. Whitespaces:
-    - no whitespace in parantheses - do `{item: 1}`, don't ```{ item: 1 }```
+    - no whitespace in parentheses - do `{item: 1}`, don't ```{ item: 1 }```
     - whitespace after comma - do `a, b`, don't `a,b`, but not if followed by a parenthesis - do `(a, b,)` don't `(a, b, )`
     - no whitespace before parenthesis - do `calc_this(x)` don't `calc_this (x)`
     - no trailing whitespaces
@@ -119,7 +119,7 @@ Make use of indentation when using continuation lines:
 1. Naming conventions:
     - package and module names: short all-lowercase, preferably no underscores (do `analysis.py`, don't `Analysis.py`; do `mypackage`, don't `my_package`)
     - class names: use CamelCase (do `MyClass`, don't `myclass`, `Myclass`, `MYCLASS`)
-    - functions and variable names: use lowercase with underscore to increase readibility (do `my_function()`, don't `myfunction()`, `MyFunction()`; do `accuracy_param`, don't `accuracyparam`, `accuracy_PARAM`)
+    - functions and variable names: use lowercase with underscore to increase readability (do `my_function()`, don't `myfunction()`, `MyFunction()`; do `accuracy_param`, don't `accuracyparam`, `accuracy_PARAM`)
     - constants: all capital with separating underscore (do `MIN_THRESHOLD`, don't `Min_Threshold`)
     - never use `l, O, I` letter names because of their similarity with `1` and `0`
 1. Underscores:

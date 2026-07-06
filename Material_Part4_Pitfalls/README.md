@@ -14,7 +14,7 @@ A source of errors can be naming a module the same as another module that is imp
 
 ## Shallow and deep copies
 
-When copying lists and other mutable variable types like dictionarys, using an `=` sign only points the new variable to the same position in memory as the initial one. Changing one then automatically changes the other.
+When copying lists and other mutable variable types like dictionaries, using an `=` sign only points the new variable to the same position in memory as the initial one. Changing one then automatically changes the other.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##shallow_and_deep_copies)
 
