@@ -130,3 +130,6 @@ dmypy.json
 
 # Backup files
 *.bak
+
+# PDF
+*.pdf
