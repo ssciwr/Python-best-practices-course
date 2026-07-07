@@ -1,16 +1,39 @@
-name: Build and deploy course material
+name: Compile slides
 
 on:
+  # Run CI on pushes to the main branch
+  push:
+    branches:
+      - main
+    paths:
+      - "slides/"
+  # Run CI on all pull requests to the main branch
+  pull_request:
+    branches:
+      - main
+    paths:
+      - "slides/"
+  # Run CI upon manual triggers through the 'Actions' tab of the Github UI
   workflow_dispatch:
-    inputs:
-      build_site_preview:
-        description: Build and upload the rendered site without deploying it
-        required: false
-        type: boolean
-        default: false
 
 jobs:
-  placeholder:
+  build-document:
+    name: Install Typst, compile and upload document
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "Placeholder job"
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Typst
+        uses: typst-community/setup-typst@v5
+
+      - name: Compile Typst script
+        run: |
+          typst compile --root . slides/ssc-pbp-course.typ
+
+      - name: Upload PDF artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: compiled-pdf
+          path: slides/ssc-pbp-course.pdf
