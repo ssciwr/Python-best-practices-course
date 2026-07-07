@@ -2,11 +2,11 @@
 
 **Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/YRmX1t0j)**
 
-Please checkout the assignment repo and follow through with the examples and instructions below. 
+Please checkout the assignment repo and follow through with the examples and instructions below.
 
 ## Naming the module
 
-A source of errors can be naming a module the same as another module that is imported, in this example the module is named `math.py` but also imports math from the standard Python library; and function calls using methods from the math module will fail, as Python will look for those in the `math.py` file. 
+A source of errors can be naming a module the same as another module that is imported, in this example the module is named `math.py` but also imports math from the standard Python library; and function calls using methods from the math module will fail, as Python will look for those in the `math.py` file.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/math.py)
 
@@ -22,7 +22,7 @@ When copying lists and other mutable variable types like dictionaries, using an 
 
 ## Instantiation of mutable default keyword arguments in function calls
 
-Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different. 
+Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##instantiation_of_mutable_default_keyword_arguments_in_function_calls)
 
@@ -32,7 +32,7 @@ Default arguments are only evaluated once: At the time the function is created. 
 
 ## Exhausting iterators
 
-Iterators and generators can be exhausted, meaning you can only use them once. 
+Iterators and generators can be exhausted, meaning you can only use them once.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##exhausting_iterators)
 
@@ -42,7 +42,7 @@ Iterators and generators can be exhausted, meaning you can only use them once.
 
 ## Variable assignment in different scopes
 
-Assigning a variable within a function shadows any assignment that may have happened in an outer scope. 
+Assigning a variable within a function shadows any assignment that may have happened in an outer scope.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##variable_assignment_in_different_scopes)
 
@@ -50,10 +50,9 @@ Assigning a variable within a function shadows any assignment that may have happ
 
 ## Closure variable binding
 
-Python uses late binding, resulting that in closures variables are only looked up once the inner function is called. 
+Python uses late binding, resulting that in closures variables are only looked up once the inner function is called.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##closure_variable_binding)
 
 
 **Solution**: Make sure the referenced variables are either passed to the inner function or are set correctly in the surrounding scope.
-

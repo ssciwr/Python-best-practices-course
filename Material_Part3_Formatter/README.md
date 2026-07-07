@@ -11,11 +11,11 @@ To invoke the Ruff formatter, use
 ```
 ruff format
 ```
-or 
+or
 ```
 ruff format --preview
 ```
-similarly to the linter. 
+similarly to the linter.
 
 You may also use `ruff check --fix`. This will not reformat all the code, but apply the fixes from linting that can be safely done.
 

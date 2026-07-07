@@ -2,9 +2,9 @@
 A code linter is there to highlight issues with the code that do not conform with a style guide, and that may lead to errors when interpreted or compiled. For Python, a code linter makes sure that the code conforms with PEP 8 standards.
 
 ## Ruff
-We will be using [Ruff](https://docs.astral.sh/ruff/linter/), a fast and popular linter for Python code.  
+We will be using [Ruff](https://docs.astral.sh/ruff/linter/), a fast and popular linter for Python code.
 
-First, you need to install ruff. You can do so by typing  
+First, you need to install ruff. You can do so by typing
 ```
 pip install ruff
 ```
@@ -37,7 +37,7 @@ help: Remove extraneous blank line(s)
 ```
 Ruff tells you which line the error occurs (for example, line 7) and at which position in that line (for example, position 1), and then report the error code (E303) and the error type (too many blank lines - in the example it also tells that it found (4) blank lines). It also tells you how to fix the issue (help: Remove extraneous blank line(s)).
 
-Armed with this information, you can then navigate to the position in your code and correct the issues. 
+Armed with this information, you can then navigate to the position in your code and correct the issues.
 
 ## Configuring Ruff
 

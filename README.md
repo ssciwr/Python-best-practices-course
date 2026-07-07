@@ -21,7 +21,7 @@ After the course participants will be able to
 ## Time and place
 The course takes place in the conference room of the Mathematikon Bauteil A (room 5/104).
 
-Course date: February 26th 2026, 9:00AM - 1:00PM 
+Course date: February 26th 2026, 9:00AM - 1:00PM
 
 ## Course content
 

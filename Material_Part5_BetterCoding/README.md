@@ -4,7 +4,7 @@
 
 Please checkout the assignment repo and follow through with the examples and instructions below. Commit any changes to a new branch and open a pull request. If the autograding/CI checks succeed, you have completed all tasks and can merge the pull request with main to submit your assignment.
 
-## Further examples 
+## Further examples
 Here are further examples, loosely based on [this video](https://youtu.be/C-gEQdGVXbk). Feel free to take a look if any of these suggestions may help you write better code in the future. **Please note that brevity has its limit and sometimes using more lines to write a piece of code can actually be better**: If it helps to improve understanding of the code.
 
 ## Why you should run code in your module only if `__name__` is `"__main__"`
@@ -17,25 +17,25 @@ if __name__ == "__main__"
 
 ### Ternary conditionals
 
-Use ternary conditionals to simplify `if ... else` statements. 
+Use ternary conditionals to simplify `if ... else` statements.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-better-code/blob/main/chapter5/better_code.ipynb)
 
 ### Context managers
- 
-Use context managers to not have to worry about tear-down methods, like closing a file. Using `with open`, for example, automatically closes the file after it has been read. 
+
+Use context managers to not have to worry about tear-down methods, like closing a file. Using `with open`, for example, automatically closes the file after it has been read.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-better-code/blob/main/chapter5/better_code.ipynb)
 
 ### Using enumerate
 
-Use `enumerate` when you want to access both the list item and its index at the same time when iterating. 
+Use `enumerate` when you want to access both the list item and its index at the same time when iterating.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-better-code/blob/main/chapter5/better_code.ipynb)
 
 ### Using zip
 
-Use `zip` if you want to iterate over two lists simultaneously. 
+Use `zip` if you want to iterate over two lists simultaneously.
 
 [*Example*](https://github.com/ssciwr-courses/pbp-better-code/blob/main/chapter5/better_code.ipynb)
 

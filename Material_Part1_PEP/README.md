@@ -12,17 +12,17 @@ You can find a list of PEPs [here](https://peps.python.org/).
 
 ## PEP 8 summary
 
-1. Line length  
-Don't write lines that are very long. Reason: Often you would use multiple windows next to each other and that makes it hard to read code (and possibly lead to introduction of bugs).  
+1. Line length
+Don't write lines that are very long. Reason: Often you would use multiple windows next to each other and that makes it hard to read code (and possibly lead to introduction of bugs).
 PEP 8 recommends lines no longer than 79 characters, but 90 is also used quite often.
 
-1. Alignment of code  
-Make use of indentation when using continuation lines:  
+1. Alignment of code
+Make use of indentation when using continuation lines:
 
         foo = long_function_name(var_one, var_two,
                                  var_three, var_four)
 
-    instead of 
+    instead of
 
         foo = long_function_name(var_one, var_two,
             var_three, var_four)
@@ -33,14 +33,14 @@ Make use of indentation when using continuation lines:
             var_one, var_two,
             var_three, var_four)
 1. Break line before binary operator
-        
+
         income = (gross_wages
           + taxable_interest
           + (dividends - qualified_dividends)
           - ira_deduction
           - student_loan_interest)
 
-    instead of  
+    instead of
 
         income = (gross_wages +
           taxable_interest +
@@ -48,7 +48,7 @@ Make use of indentation when using continuation lines:
           ira_deduction -
           student_loan_interest)
 
-1. Blank lines:  
+1. Blank lines:
     - two blank lines after `import` statements
     - two blank lines between functions and classes
     - one blank line between methods of classes
@@ -61,7 +61,7 @@ Make use of indentation when using continuation lines:
 
 
                 def goodbye():
-                    print("See ya!")    
+                    print("See ya!")
 
         instead of
 
@@ -87,7 +87,7 @@ Make use of indentation when using continuation lines:
                     def some_other():
                         pass
 
-    instead of 
+    instead of
 
             def something():
                 pass
