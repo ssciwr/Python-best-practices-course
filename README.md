@@ -1,36 +1,80 @@
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+# Best Practices in Python Programming
 
+Material for the course "Best Practices in Python Programming", Scientific
+Software Center, Heidelberg University.
 
-# Python-best-practices-course
-Material for the course "Python best practices", Scientific Software Center, Heidelberg University
+Original material by Inga Ulusoy. Revised for the next installment by Thomas
+Isensee.
 
-Inga Ulusoy, February 2026
+Python is widely used in science and research, from quick data analysis scripts
+to reusable packages and simulation workflows. This course focuses on practical
+habits and tools that make Python code easier to read, test, review, and share
+with collaborators.
 
-Python has rapidly advanced to the most popular programming language in science and research. From data analysis to simulation and preparation of publications, all can be done in Python with appropriate libraries and through implementing your own scripts, modules and packages. We will discuss some fundamental Python Enhancement Proposals (PEP) and how these can help you write cleaner code. You will learn how to use a code linter and code formatter. Common pitfalls in Python will be explained with examples. We will demonstrate typical “bad programming” and how to code the examples in a more pythonic way.
+The course is not a full introduction to testing, packaging, Git, or continuous
+integration. Instead, it shows the minimum useful practices that every Python
+project should adopt, and points to dedicated SSC courses for deeper material.
 
 ## Prerequisites
-Basic Python knowledge is required. Participants need a laptop/PC with a working Python environment installed, ideally in an IDE, and a GitHub account as we are using GitHub classrooms.
+
+Participants should have basic Python knowledge and a laptop with Python
+installed. A GitHub account is required for the classroom exercises.
+
+Recommended preparation:
+
+- Install a recent supported Python version.
+- Have either `venv`/`pip` or Conda available.
+- Install Git and configure access to GitHub.
+- Use an editor or IDE that can run terminal commands.
 
 ## Learning objectives
-After the course participants will be able to
-- Understand the basic PEP recommendations
-- Use a linter and code formatter to ensure following of the guidelines
-- Write better=more readable code
-- Avoid bugs through best practices for example in passing keyword arguments
 
-## Time and place
-The course takes place in the conference room of the Mathematikon Bauteil A (room 5/104).
+After the course participants will be able to:
 
-Course date: February 26th 2026, 9:00AM - 1:00PM
+- Explain why isolated environments make Python work more reproducible.
+- Use Ruff to lint and format Python code.
+- Understand how `pyproject.toml` connects project metadata and tool
+  configuration.
+- Explain why tests are essential and run a small pytest test suite.
+- Use simple type hints with a type checker to catch bugs earlier.
+- Recognize when a script should become a package.
+- Avoid common beginner-relevant Python pitfalls.
+- Apply modern readability patterns such as `pathlib`, `dataclasses`,
+  f-strings, and `logging`.
+- Use Git, pre-commit hooks, and CI as collaboration guardrails.
 
 ## Course content
 
-1. [PEP recommendations](Material_Part1_PEP/README.md)
-1. [Linting](Material_Part2_Linter/README.md)
-1. [Code formatting](Material_Part3_Formatter/README.md)
-1. Write better code: [Pitfalls](Material_Part4_Pitfalls)
-1. Write better code: [Examples](Material_Part5_BetterCoding)
+1. [Project setup](Material_Part1_Setup/README.md)
+2. [PEPs, style, Ruff, and pre-commit](Material_Part2_Style/README.md)
+3. [Tests and type hints](Material_Part3_Tests/README.md)
+4. [Common Python pitfalls](Material_Part4_Pitfalls/README.md)
+5. [Modern readable Python](Material_Part5_BetterCoding/README.md)
 
-## Additional Topics
+## Related SSC courses
 
-For general coding best practices, you should always put your source code under version control, implement tests and a documentation, and also add a license to your code. It is not possible to discuss all of this in a short course - here we only present Python-specific content. The SSC offers [tailored courses](https://www.ssc.uni-heidelberg.de/en/learning/all-courses) that you can participate in.
+This course gives a compact overview. For full treatments, see:
+
+- Python testing: <https://ssciwr.github.io/python-testing-intro/>
+- Python packaging: <https://ssciwr.github.io/python-packaging/>
+- SSC Python project template: <https://github.com/ssciwr/python-project-template>
+- SSC Python package cookiecutter:
+  <https://github.com/ssciwr/cookiecutter-python-package>
+
+## Assignment plan
+
+The next installment should move assignments to a classroom50 workflow. See
+[ASSIGNMENTS.md](ASSIGNMENTS.md) for concrete assignment briefs. A useful split
+is:
+
+1. Ruff and formatting: fix a messy but working codebase until `ruff check` and
+   `ruff format --check` pass.
+2. Tests and type hints: run pytest, add or complete tests, add simple
+   annotations, and fix the bug.
+3. Pitfalls and readability: refactor mutable defaults, import-time side
+   effects, fragile paths, and `print`-based status output.
+4. Project shape: identify whether code should remain a script or become a
+   package, and recognize a minimal `src/`, `tests/`, `pyproject.toml` layout.
+
+Each assignment should start in a failing state and have a reference solution
+that passes the same classroom50 autograder.

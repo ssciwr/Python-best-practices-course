@@ -1,58 +1,162 @@
-# Pitfalls: Common ways to introduce bugs in your Python code
+# Common Python pitfalls
 
-**Task 4: [GitHub assignment Python pitfalls](https://classroom.github.com/a/YRmX1t0j)**
+This section keeps the pitfalls that are most useful for participants with
+basic Python knowledge. Advanced topics such as iterator exhaustion and closure
+late binding are good follow-up material, but they are not central for this
+course.
 
-Please checkout the assignment repo and follow through with the examples and instructions below.
+## Naming a module like a library
 
-## Naming the module
+If you create a file called `math.py`, `random.py`, `typing.py`, or `logging.py`,
+it can shadow the standard-library module with the same name.
 
-A source of errors can be naming a module the same as another module that is imported, in this example the module is named `math.py` but also imports math from the standard Python library; and function calls using methods from the math module will fail, as Python will look for those in the `math.py` file.
+Problem:
 
-[*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/math.py)
+```text
+project/
+|- math.py
+`- analysis.py
+```
 
-**Solution**: Name your module file different than the modules that you are importing.
+Inside `analysis.py`:
+
+```python
+import math
+
+print(math.sqrt(4))
+```
+
+Python may import your local `math.py` instead of the standard-library `math`
+module. The result is confusing import errors or missing attributes.
+
+Prevention:
+
+- avoid file names that collide with imported libraries;
+- use clear project-specific names such as `geometry.py`;
+- let tests and CI catch import behavior on a clean checkout.
+
+## Mutable default arguments
+
+Default arguments are evaluated once, when the function is defined. This is a
+classic source of shared state bugs.
+
+Problem:
+
+```python
+def add_sample(value: float, samples: list[float] = []) -> list[float]:
+    samples.append(value)
+    return samples
+```
+
+Every call without `samples` reuses the same list.
+
+Better:
+
+```python
+def add_sample(value: float, samples: list[float] | None = None) -> list[float]:
+    if samples is None:
+        samples = []
+    samples.append(value)
+    return samples
+```
+
+Prevention:
+
+- use `None` as the default for mutable values;
+- create the mutable object inside the function;
+- write a test that calls the function twice.
 
 ## Shallow and deep copies
 
-When copying lists and other mutable variable types like dictionaries, using an `=` sign only points the new variable to the same position in memory as the initial one. Changing one then automatically changes the other.
+Assignment does not copy objects:
 
-[*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##shallow_and_deep_copies)
+```python
+original = [[1, 2], [3, 4]]
+alias = original
+alias[0].append(99)
+print(original)
+```
 
-**Solution**: Use `copy` or `deepcopy` instead to create copies of objects.
+Both names point to the same list.
 
-## Instantiation of mutable default keyword arguments in function calls
+A shallow copy copies the outer container:
 
-Default arguments are only evaluated once: At the time the function is created. If you provide a mutable default keyword argument and then change it in the function, the next time the function is called without that keyword, the default will point to the same address as in the first call; but the argument will have already changed, so the default in the first call and the default in the second call are different.
+```python
+copied = original.copy()
+```
 
-[*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##instantiation_of_mutable_default_keyword_arguments_in_function_calls)
+For nested mutable structures, inner lists are still shared. A deep copy also
+copies nested objects:
 
-**Solution**: Only provide non-mutable default arguments.
+```python
+from copy import deepcopy
 
-**Subtask (iii): Resolve the issue for `chapter4/mutable_default.py`.**
+copied = deepcopy(original)
+```
 
-## Exhausting iterators
+Use `deepcopy` deliberately. It can be slower, and for complex objects it may
+copy more than you intended. Often the better solution is to simplify the data
+structure or construct a new object explicitly.
 
-Iterators and generators can be exhausted, meaning you can only use them once.
+## Import-time side effects
 
-[*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##exhausting_iterators)
+Code at module top level runs when the module is imported. This makes code hard
+to test and reuse.
 
-**Solution**: If you create an iterator or a generator and you need it more than once you need to save it first. As in the example provided, the iterator is created using `zip`, and can be saved in a `list`.
+Problem:
 
-**Subtask (iii): Resolve the issue for `chapter4/exhaust_iterators.py`.**
-
-## Variable assignment in different scopes
-
-Assigning a variable within a function shadows any assignment that may have happened in an outer scope.
-
-[*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##variable_assignment_in_different_scopes)
-
-**Solution**: Pass the variable as an argument into the inner scope or use the return value of a new assignment.
-
-## Closure variable binding
-
-Python uses late binding, resulting that in closures variables are only looked up once the inner function is called.
-
-[*Example*](https://github.com/ssciwr-courses/pbp-pitfalls/blob/main/chapter4/pitfalls.ipynb##closure_variable_binding)
+```python
+def main() -> None:
+    print("Running analysis")
 
 
-**Solution**: Make sure the referenced variables are either passed to the inner function or are set correctly in the surrounding scope.
+main()
+```
+
+If another file imports this module, the analysis runs immediately.
+
+Better:
+
+```python
+def main() -> None:
+    print("Running analysis")
+
+
+if __name__ == "__main__":
+    main()
+```
+
+Prevention:
+
+- put reusable logic in functions and classes;
+- keep command-line execution behind `if __name__ == "__main__":`;
+- write tests that import modules without triggering expensive work.
+
+## Variable shadowing
+
+Avoid names that hide useful built-ins or imported objects:
+
+```python
+list = [1, 2, 3]
+sum = 0
+```
+
+These names make later code harder to understand and can break calls such as
+`list(...)` or `sum(...)`.
+
+Prevention:
+
+- use descriptive names such as `values`, `total`, or `records`;
+- enable Ruff rules such as `A` for built-in shadowing when appropriate.
+
+## Task idea
+
+Start with a small project that has:
+
+- one mutable default argument;
+- one import-time side effect;
+- one shallow-copy surprise;
+- one confusing name.
+
+Students should add or run tests, fix the problems, and confirm Ruff still
+passes.
