@@ -76,9 +76,37 @@
       ),
     )
   }
+  let footer(self) = {
+    set std.align(bottom)
+
+    pad(
+      bottom: .5em,
+      components.left-and-right(
+        text(
+          size: .6em,
+          fill: self.colors.neutral-darkest,
+          utils.display-current-heading(
+            level: 1,
+            depth: self.slide-level,
+            numbered: true,
+          ),
+        ),
+        text(
+          size: .6em,
+          fill: self.colors.neutral-darkest,
+          context utils.slide-counter.display()
+            + " / "
+            + utils.last-slide-number,
+        ),
+      ),
+    )
+  }
   let self = utils.merge-dicts(
     self,
-    config-page(header: header),
+    config-page(
+      header: header,
+      footer: footer,
+    ),
     config-common(subslide-preamble: self.store.subslide-preamble),
   )
   touying-slide(
@@ -117,10 +145,13 @@
       dx: self.store.title-margin-x,
       block(width: 100% - 2 * self.store.title-margin-x, {
         if info.title != none {
-          text(size: 2em, weight: "bold", info.title)
+          align(left)[#text(size: 2em, weight: "bold", info.title)]
         }
         _rule(self.store.title-rule-height, self.colors.primary)
-        if info.author != none {
+        if info.author != none and info.institution != none {
+          text(size: 1em, [#info.author, #info.institution])
+        }
+        else if info.author != none {
           text(size: 1em, info.author)
         }
       }),

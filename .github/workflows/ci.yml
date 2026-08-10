@@ -6,13 +6,13 @@ on:
     branches:
       - main
     paths:
-      - "slides/"
+      - "slides/**"
   # Run CI on all pull requests to the main branch
   pull_request:
     branches:
       - main
     paths:
-      - "slides/"
+      - "slides/**"
   # Run CI upon manual triggers through the 'Actions' tab of the Github UI
   workflow_dispatch:
 
@@ -31,9 +31,12 @@ jobs:
       - name: Compile Typst script
         run: |
           typst compile --root . slides/ssc-pbp-course.typ
+          typst compile --root . slides/prerequisites.typ
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v7
         with:
           name: compiled-pdf
-          path: slides/ssc-pbp-course.pdf
+          path: |
+            slides/ssc-pbp-course.pdf
+            slides/prerequisites.pdf
