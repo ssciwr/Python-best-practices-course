@@ -1,5 +1,7 @@
 #import "@preview/touying:0.7.4": *
 
+#let font-size = 16pt
+
 #let _rule(height, fill) = rect(
   width: 100%,
   height: height,
@@ -256,7 +258,7 @@
     ),
     config-methods(
       init: (self: none, body) => {
-        set text(size: 20pt)
+        set text(size: font-size)
         show heading.where(level: 3): set text(fill: self.colors.primary)
         show heading.where(level: 4): set text(fill: self.colors.primary)
         show footnote.entry: set text(size: .6em)
