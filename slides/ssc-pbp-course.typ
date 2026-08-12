@@ -644,13 +644,11 @@ help: Remove unused import: `os`
 #slide(title: "A tiny pytest example: code")[
   #grid(
     columns: (3fr, 2fr),
-    rows: 2,
-    column-gutter: 1em,
-    row-gutter: (1em, 5em),
+    gutter: 1em,
     grid.header([*Code under test*], [*A pytest example*],),
     [
       ```python
-      def mean(values: list[float]) -> float:
+      def mean(values):
           return sum(values) / len(values)
       ```
       #v(4em)
@@ -693,31 +691,37 @@ help: Remove unused import: `os`
   Python does not normally enforce these annotations at runtime. Their main value is that they help readers, editors, and type-checking tools.
 ]
 
-#slide(title: "mypy")[
-  Install mypy:
+#slide(title: logo("", "figures/mypy_light.svg"))[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*Installation/Setup*], [*Example*],),
+    [
+      Install mypy:
 
-  ```bash
-  python -m pip install mypy
-  ```
+      ```bash
+      python -m pip install mypy
+      ```
 
-  Run it:
+      Run it:
 
-  ```bash
-  mypy path/to/code.py
-  ```
-]
+      ```bash
+      mypy path/to/code.py
+      ```
+    ],
+    [
+      ```python
+      def total(values: list[float]) -> float:
+          return sum(values)
 
-#slide(title: "Type checker example")[
-  ```python
-  def total(values: list[float]) -> float:
-      return sum(values)
+      measurements = ["1.0", "2.0", "3.0"]
+      print(total(measurements))
+      ```
 
-  measurements = ["1.0", "2.0", "3.0"]
-  print(total(measurements))
-  ```
-
-  At runtime this fails. A type checker can flag the mistake earlier:
-  `list[str]` is not `list[float]`.
+      At runtime this fails. A type checker can flag the mistake earlier:
+      `list[str]` is not `list[float]`.
+    ]
+  )
 ]
 
 #slide(title: "Keep type hints simple")[
@@ -765,7 +769,7 @@ help: Remove unused import: `os`
     def render_summary(total: float, accepted: bool) -> str:
   ```
 
-  5. Extend `tests/test_sample_summary.py` with a test expressing this requirement:
+  5. Extend `tests/test_sample_summary.py` with a test `test_tolerance_boundary_is_included` expressing this requirement:
   ```text
   A measured value exactly one tolerance away from its target is accepted. For example, `9.5` is within a tolerance of `0.5` around `10.0`.
   ```
@@ -774,8 +778,8 @@ help: Remove unused import: `os`
 #slide(title: [Task 2: ``` gh student accept ssciwr-courses pbp-2026-09-16 section4-tests```])[
 
   ```python
-  def test_typical_value_is_within_tolerance() -> None:
-      assert is_within_tolerance(9.8, target=10.0, tolerance=0.5)
+  def test_tolerance_boundary_is_included() -> None:
+      assert is_within_tolerance(9.5, target=10.0, tolerance=0.5)
   ```
 
   1. Run `python -m pytest` again.
@@ -1358,7 +1362,7 @@ help: Remove unused import: `os`
   ```text
   This is a collection of my analysis scripts. Please write modern Python (3.11 or higher), apply common best practice techniques, and write reasonable tests in the test/ directory. Each (public) function should have a reasonable documentation comment that explains at least the input parameters and the ouptut.
 
-  Run "ruff --check ." and "ruff --format ." to validate any changes.
+  Run "ruff --check .", "ruff --format .", and "mypy ." to validate any changes.
   ```
 
   5. Use a CLI agent (e.g., Codex), then you don't have to copy-paste code into a chat.
