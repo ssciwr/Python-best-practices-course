@@ -127,8 +127,7 @@
 ]
 
 #slide(title: "Linux examples")[
-  Suggested, not required: Conda can be convenient for managing Python and
-  environments. A compact installer is #link(miniconda-url)[Miniconda].
+  Suggested, not required: Conda can be convenient for managing Python and environments. A compact installer is #link(miniconda-url)[Miniconda].
 
   Alternatively, use your distribution's package manager.
 
@@ -157,9 +156,7 @@
 ]
 
 #slide(title: "Windows examples")[
-  Suggested, not required: Conda can be convenient for managing Python and
-  environments on Windows. A compact installer is
-  #link(miniconda-url)[Miniconda].
+  Suggested, not required: Conda can be convenient for managing Python and environments on Windows. A compact installer is #link(miniconda-url)[Miniconda].
 
   Conda does not replace Git or GitHub CLI.
 
@@ -176,6 +173,55 @@
   winget install --id Git.Git -e
   winget install --id GitHub.cli -e
   ```
+]
+
+= First-Time GitHub Setup
+
+#slide(title: "Create and verify your account")[
+  If you do not already use GitHub:
+
+  1. Create an account at #link("https://github.com/")[github.com].
+  2. Verify the email address for the account.
+  3. Record your exact GitHub username.
+  4. Send your username or profile URL to the course instructor.
+
+  Your display name and GitHub username are not necessarily the same.
+
+  Already have a working GitHub account? Keep using it and skip this slide.
+]
+
+#slide(title: "Configure your Git identity")[
+  Git records an author name and email address in every commit.
+
+  Check your global configuration:
+
+  ```bash
+  git config --global --get user.name
+  git config --global --get user.email
+  ```
+
+  If either command prints nothing, configure it:
+
+  ```bash
+  git config --global user.name "Your Name"
+  git config --global user.email "your-email@example.org"
+  ```
+
+  Use an email associated with your GitHub account, or your GitHub-provided `noreply` address. These settings identify commits; they are not login credentials.
+]
+
+#slide(title: "Choose HTTPS or SSH")[
+  Git can connect to GitHub using either HTTPS or SSH.
+
+  - *First-time users:* HTTPS is usually the easiest option. After running `gh student login`, configure Git to use the stored GitHub CLI credential:
+
+    ```bash
+    gh auth setup-git
+    ```
+
+  - *Existing GitHub users:* keep your working HTTPS or SSH setup. There is no need to change protocols or replace working SSH keys.
+
+  You do not need to create a personal access token for this course.
 ]
 
 = classroom50
@@ -201,10 +247,9 @@
   gh student login
   ```
 
-  This starts the GitHub login flow with the permissions needed to accept and
-  submit classroom50 assignments.
+  This starts the GitHub login flow with the permissions needed to accept and submit classroom50 assignments.
 
-  Browser-based login is usually easiest.
+  Browser-based login is usually easiest. Your Git transport can remain either  HTTPS or SSH.
 ]
 
 #slide(title: "Update classroom50 student CLI")[
@@ -225,10 +270,10 @@
   gh --version
   gh student --help
   gh auth status
+  gh api user --jq .login
   ```
 
-  If `python` works but `python3` does not, use the command that points to
-  Python 3.11 or newer.
+  If `python` works but `python3` does not, use the command that points to Python 3.11 or newer.
 ]
 
 #slide(title: "Verify on Windows PowerShell")[
@@ -239,6 +284,7 @@
   gh --version
   gh student --help
   gh auth status
+  gh api user --jq .login
   ```
 
   With Conda, activate the environment first and use `python` instead of `py`.
@@ -249,6 +295,7 @@
   - `pip`, `git`, and `gh` print version information.
   - `gh student --help` prints classroom50 command help.
   - `gh auth status` shows that you are logged in to GitHub.
+  - `gh api user --jq .login` prints the GitHub username sent to the instructor.
 ]
 
 = Optional Environment Check
@@ -280,8 +327,7 @@
 ]
 
 #slide(title: "Optional Conda environment")[
-  Conda can be especially convenient on Linux and Windows, but it is not
-  required.
+  Conda can be especially convenient on Linux and Windows, but it is not required.
   To check an equivalent environment:
 
   ```bash
