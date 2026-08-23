@@ -451,7 +451,7 @@
 ]
 
 #slide(title: "Install and run Ruff")[
-  Install Ruff via #raw(block: false, "python -m pip install ruff")
+  Install Ruff via #raw(block: false, lang: "bash", "python -m pip install ruff")
   #v(2em)
   #grid(
     columns: (1fr, 1fr),
@@ -532,7 +532,7 @@ help: Remove unused import: `os`
   ]
   ```
 ][
-  In a standalone #raw(block: false, "ruff.toml"), omit the `tool.ruff` prefix:
+  In a standalone #raw(block: false, "ruff.toml"), omit the #raw(block: false, "tool.ruff") prefix:
 
   ```toml
   line-length = 88
@@ -564,14 +564,14 @@ help: Remove unused import: `os`
     ```yaml
     repos:
       - repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: v0.16.2
+        rev: v0.16.4
         hooks:
           - id: ruff-check
             args: [--fix, --show-fixes]
           - id: ruff-format
     ```
 
-    Run all hooks manually with `pre-commit run --all-files`.
+    Run all hooks manually with #raw(block: false, lang: "bash", "pre-commit run --all-files").
   ]
   )
 ]
@@ -589,16 +589,16 @@ help: Remove unused import: `os`
   #align(center)[Your colleagues won't be able to mess up your code!]
 ]
 
-#slide(title: [Task 1: ``` gh student accept ssciwr-courses pbp-2026-09-16 section3-ruff```])[
+#slide(title: [Task 1: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section3-ruff")])[
   #grid(
     columns: (1fr, 1fr),
     rows: 2,
     gutter: 1em,
     grid.cell(rowspan: 2)[
-      1. Install Ruff and pre-commit via `python -m pip install ruff pre-commit`
-      2. Run `ruff check .` and inspect the output.
-      3. Run `ruff check --fix .` and inspect the diff via `git diff`.
-      4. Run `ruff format .` and inspect the diff via `git diff`.
+      1. Install Ruff and pre-commit via #raw(block: false, lang: "bash", "python -m pip install ruff pre-commit")
+      2. Run #raw(block: false, lang: "bash", "ruff check .") and inspect the output.
+      3. Run #raw(block: false, lang: "bash", "ruff check --fix .") and inspect the diff via #raw(block: false, lang: "bash", "git diff").
+      4. Run #raw(block: false, lang: "bash", "ruff format .") and inspect the diff via #raw(block: false, lang: "bash", "git diff").
       5. Add a pre-commit configuration file `.pre-commit-config.yaml`.
     ],
     [
@@ -606,16 +606,16 @@ help: Remove unused import: `os`
       ```bash
       repos:
       - repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: v0.16.2
+        rev: v0.16.4
         hooks:
           - id: ruff-check
             args: [--fix, --show-fixes]
           - id: ruff-format
       ```
 
-      6. Run `pre-commit install`.
-      7. Commit changes via `git commit -m "Fix format"`
-      8. Run `gh student submit` for submitting.
+      6. Run #raw(block: false, lang: "bash", "pre-commit install").
+      7. Commit changes via #raw(block: false, lang: "bash", "git commit -m \"Fix format\"")
+      8. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
   ]
   )
 ]
@@ -734,31 +734,31 @@ help: Remove unused import: `os`
   - do not turn a beginner project into a typing puzzle
 ]
 
-#slide(title: [Task 2: ``` gh student accept ssciwr-courses pbp-2026-09-16 section4-tests```])[
+#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section4-tests")])[
   #grid(
     columns: (1fr, 1fr),
     gutter: 1em,
     [
-      1. Install mypy via `python -m pip install mypy`.
-      2. Run `python -m sample_summary.py` and `python -m pytest`.
+      1. Install mypy via #raw(block: false, lang: "bash", "python -m pip install mypy").
+      2. Run #raw(block: false, lang: "bash", "python -m sample_summary") and #raw(block: false, lang: "bash", "python -m pytest").
     ],
     [
-      3. Now run `python -m mypy sample_summary.py`.
+      3. Now run #raw(block: false, lang: "bash", "python -m mypy sample_summary.py").
       4. Examine the issues and fix them.
     ]
   )
 ]
 
-#slide(title: [Task 2: ``` gh student accept ssciwr-courses pbp-2026-09-16 section4-tests```])[
+#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section4-tests")])[
   #grid(
     columns: (1fr, 1fr),
     gutter: 1em,
     [
-      1. Install mypy via `python -m pip install mypy`.
-      2. Run `python -m sample_summary.py` and `python -m pytest`.
+      1. Install mypy via #raw(block: false, lang: "bash", "python -m pip install mypy").
+      2. Run #raw(block: false, lang: "bash", "python -m sample_summary.py") and #raw(block: false, lang: "bash", "python -m pytest").
     ],
     [
-      3. Now run `python -m mypy sample_summary.py`.
+      3. Now run #raw(block: false, lang: "bash", "python -m mypy sample_summary.py").
       4. Examine the issues and fix them.
     ]
   )
@@ -775,15 +775,15 @@ help: Remove unused import: `os`
   ```
 ]
 
-#slide(title: [Task 2: ``` gh student accept ssciwr-courses pbp-2026-09-16 section4-tests```])[
+#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section4-tests")])[
 
   ```python
   def test_tolerance_boundary_is_included() -> None:
       assert is_within_tolerance(9.5, target=10.0, tolerance=0.5)
   ```
 
-  1. Run `python -m pytest` again.
-  2. Run `gh student submit` for submitting.
+  1. Run #raw(block: false, lang: "bash", "python -m pytest") again.
+  2. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
 
 ]
 
@@ -951,13 +951,90 @@ help: Remove unused import: `os`
   The guard prevents `main()` from running when tests or other programs import the module.
 ]
 
-#slide(title: [Task 3: ``` gh student accept ssciwr-courses pbp-2026-09-16 section5-pitfalls```])[
+#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section5-pitfalls")])[
+
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    gutter: 1em,
+    [
+      1. Add a test that checks record_warning with default argument.
+      ```python
+      def test_record_warning_uses_a_fresh_default() -> None:
+          assert record_warning("first") == ["first"]
+          assert record_warning("second") == ["second"]
+      ```
+
+      2. Fix the mutable default argument.
+      ```python
+      def record_warning(
+          message: str,
+          warnings: list[str] | None = None,
+      ) -> list[str]:
+          if warnings is None:
+              warnings = []
+          warnings.append(message)
+          return warnings
+      ```
+    ],
+    [
+      3. Add test for sum of two measurements.
+      ```python
+      def test_total_value_uses_approximate_float_comparison() -> None:
+          measurements = [
+              Measurement("A", 0.1, "mm"),
+              Measurement("B", 0.2, "mm"),
+          ]
+
+          assert total_value(measurements) == pytest.approx(0.3)
+      ```
+
+      4. Test that zero is a valid tolerance.
+      ```python
+      def test_zero_is_a_valid_tolerance() -> None:
+        assert effective_tolerance(0.0) == 0.0
+      ```
 
 
+    ]
+  )
+]
+#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section5-pitfalls")])[
 
-  1. Run `python -m pytest` again.
-  2. Run `gh student submit` for submitting.
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    gutter: 1em,
+    [
+      5. Fix `effective_tolerance`.
+      ```python
+      def effective_tolerance(requested: float | None) -> float:
+          """Return the requested tolerance or the workflow default."""
+          if requested is None:
+              return DEFAULT_TOLERANCE
+          return requested
+      ```
+      6. Test that invalid measurements raise an error.
+      ```python
+        def test_parse_invalid_measurement() -> None:
+            with pytest.raises(ValueError, match="not-a-number"):
+                parse_measurement("A5", "not-a-number", "C")
+      ```
+    ],
+    [
+      7. Let possible errors propagate and do not invent replacement values.
+      ```python
+      def parse_measurement(sample_id: str, text: str, unit: str) -> Measurement:
+          """Parse one measurement exported by an instrument."""
+          value = float(text)
+          return Measurement(sample_id, value, unit)
+      ```
 
+      8. Run #raw(block: false, lang: "bash", "python -m pytest") again.
+      9. Run #raw(block: false, lang: "bash", "ruff check --fix .") and #raw(block: false, lang: "bash", "ruff format .")
+      10. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
+    ]
+  )
 ]
 
 = Modern Readable Python
@@ -1343,11 +1420,32 @@ help: Remove unused import: `os`
   )
 ]
 
-#slide(title: [Task 4: ``` gh student accept ssciwr-courses pbp-2026-09-16 section6-readable-python```])[
+#slide(title: [Task 4: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section6-readable-python")])[
 
-  1. Run `python -m pytest` again.
-  2. Run `gh student submit` for submitting.
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    gutter: 1em,
+    [
+    ],
+    [
+    ]
+  )
+]
+#slide(title: [Task 4: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section6-readable-python")])[
 
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    gutter: 1em,
+    [
+    ],
+    [
+      8. Run #raw(block: false, lang: "bash", "python -m pytest") again.
+      9. Run #raw(block: false, lang: "bash", "ruff check --fix .") and #raw(block: false, lang: "bash", "ruff format .")
+      10. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
+    ]
+  )
 ]
 
 = Comment on AI/LLM usage

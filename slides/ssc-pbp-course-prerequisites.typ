@@ -61,14 +61,14 @@
   - Python 3.11 or newer
   - Git
   - GitHub CLI (`gh`)
-  - classroom50 student extension
+  - Classroom50 student extension
   - terminal or shell access
 
   Recommended: a Python-aware editor or IDE.
 ]
 
 #slide(title: "Why this matters")[
-  The exercises use GitHub and classroom50.
+  The exercises use GitHub and Classroom50.
 
   A working command-line setup lets you:
 
@@ -169,7 +169,7 @@
   Or with PowerShell and `winget`:
 
   ```powershell
-  winget install --id Python.Python.3.14.6 -e
+  winget install --id Python.Python.3.14.7 -e
   winget install --id Git.Git -e
   winget install --id GitHub.cli -e
   ```
@@ -210,29 +210,21 @@
   Use an email associated with your GitHub account, or your GitHub-provided `noreply` address. These settings identify commits; they are not login credentials.
 ]
 
-#slide(title: "Choose HTTPS or SSH")[
-  Git can connect to GitHub using either HTTPS or SSH.
+= Classroom50
 
-  - *First-time users:* HTTPS is usually the easiest option. After running `gh student login`, configure Git to use the stored GitHub CLI credential:
-
-    ```bash
-    gh auth setup-git
-    ```
-
-  - *Existing GitHub users:* keep your working HTTPS or SSH setup. There is no need to change protocols or replace working SSH keys.
-
-  You do not need to create a personal access token for this course.
-]
-
-= classroom50
-
-#slide(title: "Install classroom50 student CLI")[
-  The course assignments use classroom50 through a GitHub CLI extension.
+#slide(title: "Install Classroom50 student CLI")[
+  The course assignments use Classroom50 through a GitHub CLI extension.
 
   Install:
 
   ```bash
   gh extension install foundation50/gh-student
+  ```
+
+  If the extension is already installed, update it with:
+
+  ```bash
+  gh extension upgrade gh-student
   ```
 
   Verify:
@@ -247,17 +239,23 @@
   gh student login
   ```
 
-  This starts the GitHub login flow with the permissions needed to accept and submit classroom50 assignments.
+  This starts the GitHub login flow with the permissions needed to accept and submit Classroom50 assignments.
 
   Browser-based login is usually easiest. Your Git transport can remain either  HTTPS or SSH.
 ]
 
-#slide(title: "Update classroom50 student CLI")[
-  If the extension is already installed, update it with:
+#slide(title: "Choose HTTPS or SSH")[
+  Git can connect to GitHub using either HTTPS or SSH.
 
-  ```bash
-  gh extension upgrade gh-student
-  ```
+  - *First-time users:* HTTPS is usually the easiest option. After running `gh student login`, configure Git to use the stored GitHub CLI credential:
+
+    ```bash
+    gh auth setup-git
+    ```
+
+  - *Existing GitHub users:* keep your working HTTPS or SSH setup. There is no need to change protocols or replace working SSH keys.
+
+  You do not need to create a personal access token for this course.
 ]
 
 = Check Your Setup
@@ -293,7 +291,7 @@
 #slide(title: "Expected result")[
   - Python reports version 3.11 or newer.
   - `pip`, `git`, and `gh` print version information.
-  - `gh student --help` prints classroom50 command help.
+  - `gh student --help` prints Classroom50 command help.
   - `gh auth status` shows that you are logged in to GitHub.
   - `gh api user --jq .login` prints the GitHub username sent to the instructor.
 ]
@@ -331,7 +329,7 @@
   To check an equivalent environment:
 
   ```bash
-  conda create -n pbp-course python=3.14.6
+  conda create -n pbp-course python=3.14.7
   conda activate pbp-course
   python -m pip install ruff pytest mypy
   ```
