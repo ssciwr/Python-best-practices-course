@@ -81,24 +81,30 @@
   let footer(self) = {
     set std.align(bottom)
 
-    pad(
-      bottom: .5em,
-      components.left-and-right(
-        text(
-          size: .6em,
-          fill: self.colors.neutral-darkest,
-          utils.display-current-heading(
-            level: 1,
-            depth: self.slide-level,
-            numbered: true,
+    block(
+      width: 100%,
+      height: 1.5em,
+      fill: self.colors.primary,
+      inset: (x: self.store.slide-margin-x),
+      align(
+        horizon,
+        components.left-and-right(
+          text(
+            size: .6em,
+            fill: self.colors.neutral-lightest,
+            utils.display-current-heading(
+              level: 1,
+              depth: self.slide-level,
+              numbered: true,
+            ),
           ),
-        ),
-        text(
-          size: .6em,
-          fill: self.colors.neutral-darkest,
-          context utils.slide-counter.display()
-            + " / "
-            + utils.last-slide-number,
+          text(
+            size: .6em,
+            fill: self.colors.neutral-lightest,
+            context utils.slide-counter.display()
+              + " / "
+              + utils.last-slide-number,
+          ),
         ),
       ),
     )
@@ -254,7 +260,7 @@
       slide-fn: slide,
       new-section-slide-fn: new-section-slide,
       zero-margin-header: false,
-      zero-margin-footer: false,
+      zero-margin-footer: true,
     ),
     config-methods(
       init: (self: none, body) => {
