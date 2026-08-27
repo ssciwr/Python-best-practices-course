@@ -11,12 +11,28 @@
   radius: 4pt,
 )
 
-#show raw.where(block: true): it => block(
-  fill: luma(80.78%),
-  inset: 12pt,
-  radius: 8pt,
-  text(size: 10.5pt, it),
-)
+#let code-fill = luma(80.78%)
+#let output-fill = code-fill
+#let output-accent = rgb("#3a9ebf")
+
+#show raw.where(block: true): it => {
+  if it.lang == "output" {
+    block(
+      fill: output-fill,
+      stroke: (left: 3pt + output-accent),
+      inset: 12pt,
+      radius: 8pt,
+      text(size: 9.5pt, it),
+    )
+  } else {
+    block(
+      fill: code-fill,
+      inset: 12pt,
+      radius: 8pt,
+      text(size: 10.5pt, it),
+    )
+  }
+}
 #set raw(theme: auto)
 
 #let logo(text, icon, baseline: 10%, hspace: 0.05em, height: 0.9em) = box[
@@ -55,84 +71,52 @@
 
 #components.adaptive-columns(outline(title: none, indent: 1em))
 
+
 = Course Overview
 
-#slide(title: "Course focus")[
-  #logo("Python", "figures/python-logo.svg") is widely used in science and research, from quick data analysis scripts to reusable packages and simulation workflows.
+#slide(title: "Course overview")[
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    column-gutter: 1em,
+    row-gutter: (1em, 5em),
+    grid.header([*Course focus*], [*What it's not*],),
+    [
+      #logo("Python", "figures/python-logo.svg") is widely used in science and research, from quick data analysis scripts to reusable packages and simulation workflows.
 
-  This course focuses on practical habits and tools that make Python code easier to read, test, review, and share with collaborators.
-]
+      This course focuses on practical habits and tools that make Python code easier to read, test, review, and share with collaborators.
+    ],
+    [
+      This is not a full introduction to:
 
-#slide(title: "What this course is not")[
-  This is not a full introduction to:
+      - Git
+      - type checking
+      - testing
+      - packaging
 
-  - testing
-  - packaging
-  - Git
-  - continuous integration (CI)
-
-  We cover the minimum useful practices and point to dedicated #link("https://www.ssc.uni-heidelberg.de/en/learning/all-courses")[SSC courses].
-]
-
-#slide(title: "Learning objectives")[
-  After the course, participants should be able to:
-
-  - use isolated environments and basic project structure
-  - lint and format with Ruff
-  - understand `pyproject.toml` as project/tool configuration
-  - run small pytest suites and simple type checks
-  - avoid beginner-relevant pitfalls
-  - apply modern readability patterns
-]
-
-#slide(title: "Development workflow")[
-  #align(center)[
-    #block(
-      fill: luma(80.78%),
-      inset: 12pt,
-      radius: 8pt,
-      [Edit \u{27F6} Format/Lint \u{27F6} Test \u{27F6} Commit \u{27F6} Review/CI]
-    )
-  ]
-
-  This is a feedback loop: after each change, tools and tests quickly tell you whether the code is still readable, working, and ready to share.
-]
-
-#slide(title: "Related SSC material")[
+      We cover the minimum useful practices and point to dedicated #link("https://www.ssc.uni-heidelberg.de/en/learning/all-courses")[SSC courses].
+    ]
+  )
+  #v(1cm)
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    column-gutter: 1em,
+    row-gutter: (1em, 5em),
+    grid.header([*Related SSC course material*], [],),
+    [
   - Python testing: #link(testing-url)[Introduction to Python Testing]
   - Python packaging: #link(packaging-url)[Python Packaging]
   - Project template: #link(template-url)[SSC Python project template]
   - Project cookiecutter: #link(cookiecutter-url)[SSC Python package template]
+    ],[]
+  )
 ]
+
 
 = Project Setup
 
-#slide(title: [#logo("Git", "figures/git-logo.svg") basics for this course])[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    grid.header([*Basic Git functionality*], [*Recommended project files*],),
-    [
-      Git is the history and collaboration layer for this development workflow.
-
-      Participants should know how to:
-
-      - clone a repository
-      - create or edit files
-      - inspect changes with `git status` and `git diff`
-      - commit changes
-      - push committed changes to the remote repository
-    ],
-    [
-  - `.gitignore` for files that should not be committed
-  - `README.md` for setup and usage instructions
-  - `pyproject.toml` or another explicit dependency/configuration file
-  - tests and CI once the project grows beyond a throwaway script
-
-  Git makes changes visible, reviewable, and recoverable.
-    ]
-  )
-]
+== Python project
 
 #slide(title: "Questions a project should answer")[
   Before talking about code style, a project should make clear:
@@ -143,6 +127,28 @@
   - Where are tests expected to live?
   - Is the project under version control?
 ]
+
+== Git
+#slide(title: [#logo("Git", "figures/git-logo.svg") basics for this course])[
+
+  Git is the history and collaboration layer for this development workflow.
+
+  Most important aspects:
+
+  - clone a repository with `git clone <repo-url>`
+  - create or edit files
+  - inspect changes with `git status` and `git diff`
+  - commit changes with `git commit`
+  - push committed changes to the remote repository with with `git push`
+  - `.gitignore` for files that should not be committed
+
+  For this course:
+  - `gh student accept ssciwr-courses pbp-2026-09-16 <assignment-name>`
+  - `gh student submit`
+
+]
+
+== Virtual environments
 
 #slide(title: "Why isolated environments?")[
   An isolated environment keeps a project's dependencies separate from your system Python and from other projects.
@@ -172,7 +178,7 @@
   Conda is common in scientific Python, especially when a project depends on compiled libraries or non-Python packages.
 
   ```bash
-  conda create -n my-project python=3.14.6
+  conda create -n my-project python=3.14.7
   conda activate my-project
   conda install numpy scipy
   python -m pip install ruff pytest
@@ -180,7 +186,7 @@
 ]
 
 #slide(title: logo("uv", "figures/uv-logo-letter.svg"))[
-  #link(uv-url)[uv] is a newer Python project and package manager from the same organization as Ruff.
+  #link(uv-url)[uv] is a newer Python project and package manager written in Rust.
 
   It can:
 
@@ -193,207 +199,29 @@
   Highly recommended, not required for this course.
 ]
 
-#slide(title: "Script or package?")[
-  Not every file needs to become a package. A script with a small test function can stay a script, or a notebook.
-
-  Consider a package when code is:
-
-  - imported from multiple scripts or notebooks
-  - reused by collaborators
-  - tested in CI
-  - documented as an importable API
-  - installed into an environment
-  - published or archived as a reusable tool
-]
-
-#slide(title: "Minimal package-shaped project")[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    grid.header([*Project structure*], [],),
-    [
-      ```text
-      my-project/
-      ├── README.md
-      ├── pyproject.toml
-      ├── src/
-      |   └── my_project/
-      |       ├── __init__.py
-      |       └── analysis.py
-      └── tests/
-          └── test_analysis.py
-      ```
-
-      `src/` helps tests use the installed package.
-
-      `tests/` keeps tests separate from library code.
-
-      `README.md` contains general information about the repository and is displayed as front page on GitHub and others.
-    ],
-    []
-  )
-]
-
-#slide(title: "Minimal package-shaped project")[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    grid.header([*Project structure*], [*Project metadata*],),
-    [
-      ```text
-      my-project/
-      ├── README.md
-      ├── pyproject.toml
-      ├── src/
-      |   └── my_project/
-      |       ├── __init__.py
-      |       └── analysis.py
-      └── tests/
-          └── test_analysis.py
-      ```
-
-      `src/` helps tests use the installed package.
-
-      `tests/` keeps tests separate from library code.
-
-      `README.md` contains general information about the repository and is displayed as front page on GitHub and others.
-    ],
-    [
-      `pyproject.toml` started as build-system configuration, but today it is also the standard place for project metadata and tool configuration.
-
-      It can record:
-
-      - project metadata (Version, description, authors etc.)
-      - supported Python versions
-      - dependencies
-      - optional development dependencies
-      - tool settings for Ruff, pytest, mypy, setuptools, and others
-    ]
-  )
-]
-
-#slide(title: "pyproject.toml")[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    grid.header([*File content*], [*Project metadata*],),
-    [
-      ```toml
-      [project]
-      name = "my-analysis"
-      version = "0.1.0"
-      requires-python = ">=3.11"
-      dependencies = ["numpy", "pandas"]
-
-      [project.optional-dependencies]
-      dev = ["pytest", "ruff", "mypy"]
-      ```
-
-      The key idea: another person or CI should be able to recreate the setup without any effort.
-    ],
-    [
-      `pyproject.toml` started as build-system configuration, but today it is also the standard place for project metadata and tool configuration.
-
-      It can record:
-
-      - project metadata (Version, description, authors etc.)
-      - supported Python versions
-      - dependencies
-      - optional development dependencies
-      - tool settings for Ruff, pytest, mypy, setuptools, and others
-    ]
-  )
-]
-
-#slide(title: "Tool configuration example")[
-  #grid(
-    columns: (1fr, 1fr),
-    gutter: 1em,
-    grid.header([*File content*], [*Project metadata*],),
-    [
-      ```toml
-      [project]
-      name = "my-analysis"
-      version = "0.1.0"
-      requires-python = ">=3.11"
-      dependencies = ["numpy", "pandas"]
-
-      [project.optional-dependencies]
-      dev = ["pytest", "ruff", "mypy"]
-      ```
-
-      The key idea: another person or CI should be able to recreate the setup without any effort.
-      ```toml
-      [tool.ruff]
-      line-length = 79
-
-      [tool.pytest.ini_options]
-      testpaths = ["tests"]
-      ```
-    ],
-    [
-      `pyproject.toml` started as build-system configuration, but today it is also the standard place for project metadata and tool configuration.
-
-      It can record:
-
-      - project metadata (Version, description, authors etc.)
-      - supported Python versions
-      - dependencies
-      - optional development dependencies
-      - tool settings for Ruff, pytest, mypy, setuptools, and others
-    ]
-  )
-]
-
 = PEPs, Style, Ruff, and pre-commit
 
-#slide(title: "Why style comes after setup")[
-  Once the project shape is clear, we can talk about code style.
-
-  The central idea is not to memorize every rule. The central idea is to make code predictable enough that readers can focus on meaning.
-]
-
 #slide(title: "PEPs and PEP 8")[
   #grid(
     columns: (1fr, 1fr),
-    gutter: 1em,
-    grid.header([*PEPs*], [*PEP 8*],),
-    [
-      Python Enhancement Proposals (PEPs) describe Python language changes, processes, and conventions.
+    row-gutter: 1em,
+    grid.header([*PEP 8*], []),
+    grid.cell(
+      colspan: 2,
+      [
+        Python Enhancement Proposals (PEPs) describe Python language changes, processes, and conventions.
 
-      - PEP index: #link(peps-url)[peps.python.org]
-      - PEP 8: #link(pep8-url)[style guide for Python code]
-
-      PEP 8 covers naming, indentation, imports, whitespace, comments, and layout conventions.
-    ],
-    [
-      For this course, the most important message is:
-
-      - prefer consistency over personal taste
-      - prefer readable code over clever code
-      - automate formatting and linting whenever possible
-      - adapt when a project already has a local style
-    ]
+        - PEP index: #link(peps-url)[peps.python.org]
+        - PEP 8: #link(pep8-url)[style guide for Python code]
+      ],
+    )
   )
-  #v(2em)
-  #align(center)[Easter Egg: Type #raw(block: false, lang: "python", "import this") and find enlightenment.]
-]
-
-#slide(title: "PEPs and PEP 8")[
+  #v(1cm)
   #grid(
     columns: (1fr, 1fr),
-    rows: 2,
     column-gutter: 1em,
-    row-gutter: (1em, 5em),
-    grid.header([*PEPs*], [*PEP 8*],),
-    [
-      Python Enhancement Proposals (PEPs) describe Python language changes, processes, and conventions.
-
-      - PEP index: #link(peps-url)[peps.python.org]
-      - PEP 8: #link(pep8-url)[style guide for Python code]
-
-      PEP 8 covers naming, indentation, imports, whitespace, comments, and layout conventions.
-    ],
+    row-gutter: 1em,
+    grid.header(grid.cell(colspan: 2)[*PEP 8 covers naming, indentation, imports, whitespace, comments, and layout conventions.*]),
     [
       For this course, the most important message is:
 
@@ -407,14 +235,88 @@
       - Put imports at the top of the file.
       - Prefer one import per line.
       - Use `lowercase_with_underscores` for functions and variables.
-    ],
-    [
       - Use `CamelCase` for classes.
       - Avoid ambiguous names such as `l`, `O`, and `I`.
       - Keep comments and code consistent.
       - #text(fill: red)[BORING!]
     ]
   )
+]
+
+#slide(title: "PEPs and PEP 8")[
+  #grid(
+    columns: (1fr, 1fr),
+    row-gutter: 1em,
+    grid.header([*PEP 8*], []),
+    grid.cell(
+      colspan: 2,
+      [
+        Python Enhancement Proposals (PEPs) describe Python language changes, processes, and conventions.
+
+        - PEP index: #link(peps-url)[peps.python.org]
+        - PEP 8: #link(pep8-url)[style guide for Python code]
+      ],
+    )
+  )
+  #v(1cm)
+  #grid(
+    columns: (1fr, 1fr),
+    column-gutter: 1em,
+    row-gutter: 1em,
+    grid.header(grid.cell(colspan: 2)[*PEP 8 covers naming, indentation, imports, whitespace, comments, and layout conventions.*]),
+    [
+      For this course, the most important message is:
+
+      - prefer consistency over personal taste
+      - prefer readable code over clever code
+      - automate formatting and linting whenever possible
+      - adapt when a project already has a local style
+      #v(1.5em)
+      #align(center)[Easter Egg: Type #raw(block: false, lang: "python", "import this") and find enlightenment.]
+    ],
+    [
+      - Use 4 spaces per indentation level.
+      - Put imports at the top of the file.
+      - Prefer one import per line.
+      - Use `lowercase_with_underscores` for functions and variables.
+      - Use `CamelCase` for classes.
+      - Avoid ambiguous names such as `l`, `O`, and `I`.
+      - Keep comments and code consistent.
+      - #text(fill: red)[BORING!]
+    ]
+  )
+]
+
+
+#slide(title: "PEPs and PEP 8")[
+  #align(center)[
+    Easter Egg: Type #raw(block: false, lang: "python", "import this") and find enlightenment.
+
+    ```output
+    >>> import this
+    The Zen of Python, by Tim Peters
+
+    Beautiful is better than ugly.
+    Explicit is better than implicit.
+    Simple is better than complex.
+    Complex is better than complicated.
+    Flat is better than nested.
+    Sparse is better than dense.
+    Readability counts.
+    Special cases aren't special enough to break the rules.
+    Although practicality beats purity.
+    Errors should never pass silently.
+    Unless explicitly silenced.
+    In the face of ambiguity, refuse the temptation to guess.
+    There should be one-- and preferably only one --obvious way to do it.
+    Although that way may not be obvious at first unless you're Dutch.
+    Now is better than never.
+    Although never is often better than *right* now.
+    If the implementation is hard to explain, it's a bad idea.
+    If the implementation is easy to explain, it may be a good idea.
+    Namespaces are one honking great idea -- let's do more of those!
+    ```
+  ]
 ]
 
 #slide(title: "Automated style feedback")[
@@ -509,40 +411,49 @@ help: Remove unused import: `os`
   - import os
   ```
 
-  - `E401` is the rule code.
+  - `F401` is the rule code.
   - `sensor_report.py:6:8` is file, line, and column.
   - `[*]` means Ruff can fix this automatically.
   - the `help` line explains the change.
 ]
 
-#slide(composer: (1fr, 1fr), title: "Configuring Ruff")[
-  In #raw(block: false, "pyproject.toml"):
-  ```toml
-  [tool.ruff]
-  line-length = 79
+#slide(title: "Configuring Ruff")[
+  #grid(
+    columns: (1fr, 1fr),
+    rows: 2,
+    column-gutter: 1em,
+    row-gutter: (1em, 5em),
+    grid.header([*#raw(block: false, "pyproject.toml"):*], [*#raw(block: false, "ruff.toml")*],),
+    [
+      ```toml
+      [tool.ruff]
+      line-length = 79
 
-  [tool.ruff.lint]
-  select = [
-      "E",  # pycodestyle errors
-      "F",  # Pyflakes
-      "B",  # flake8-bugbear
-      "I",  # import sorting
-      "UP", # pyupgrade
-      "SIM",
-  ]
-  ```
-][
-  In a standalone #raw(block: false, "ruff.toml"), omit the #raw(block: false, "tool.ruff") prefix:
+      [tool.ruff.lint]
+      select = [
+          "E",  # pycodestyle errors
+          "F",  # Pyflakes
+          "B",  # flake8-bugbear
+          "I",  # import sorting
+          "UP", # pyupgrade
+          "SIM",
+      ]
+      ```
+    ],
+    [
+      ```toml
+      line-length = 79
 
-  ```toml
-  line-length = 79
+      [lint]
+      select = ["E", "F", "B", "I", "UP", "SIM"]
+      ```
+    ]
+  )
+  #v(1cm)
+  #align(center)[Start with a small rule set and add more rules deliberately.]
+]
 
-  [lint]
-  select = ["E", "F", "B", "I", "UP", "SIM"]
-  ```
-][Start with a small rule set and add more rules deliberately.]
-
-#slide(title: logo("pre-commit", "figures/pre-commit-logo.svg"))[
+#slide(title: [#logo("pre-commit", "figures/pre-commit-logo.svg") and Ruff])[
   `pre-commit` runs checks before a commit is created.
   #v(2em)
   #grid(
@@ -564,7 +475,7 @@ help: Remove unused import: `os`
     ```yaml
     repos:
       - repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: v0.16.4
+        rev: v0.16.6
         hooks:
           - id: ruff-check
             args: [--fix, --show-fixes]
@@ -573,6 +484,46 @@ help: Remove unused import: `os`
 
     Run all hooks manually with #raw(block: false, lang: "bash", "pre-commit run --all-files").
   ]
+  )
+]
+
+#slide(title: [#logo("pre-commit", "figures/pre-commit-logo.svg") and other tools])[
+  `pre-commit` can apply other useful tools as well.
+
+  #grid(
+    columns: (1.2fr, 1fr),
+    rows: 2,
+    column-gutter: 0.5em,
+    row-gutter: 1em,
+    grid.header([*General*], [*nbstripout*],),
+    [
+    ```yaml
+    repos:
+      - repo: https://github.com/pre-commit/pre-commit-hooks
+        rev: v6.0.0
+        hooks:
+          - id: end-of-file-fixer
+          - id: check-added-large-files
+          - id: check-json
+          - id: check-toml
+          - id: check-yaml
+          - id: mixed-line-ending
+          - id: requirements-txt-fixer
+          - id: trailing-whitespace
+    ```
+    Always good to have.
+    ],
+    [
+    ```yaml
+    repos:
+      - repo: https://github.com/kynan/nbstripout
+        rev: 0.9.1
+        hooks:
+          - id: nbstripout
+            files: ".ipynb"
+    ```
+    Remove output from Jupyter notebooks. Commit only code.
+    ]
   )
 ]
 
@@ -589,7 +540,7 @@ help: Remove unused import: `os`
   #align(center)[Your colleagues won't be able to mess up your code!]
 ]
 
-#slide(title: [Task 1: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section3-ruff")])[
+#slide(title: [Task 1: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 ruff")])[
   #grid(
     columns: (1fr, 1fr),
     rows: 2,
@@ -606,7 +557,7 @@ help: Remove unused import: `os`
       ```bash
       repos:
       - repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: v0.16.4
+        rev: v0.16.6
         hooks:
           - id: ruff-check
             args: [--fix, --show-fixes]
@@ -614,34 +565,320 @@ help: Remove unused import: `os`
       ```
 
       6. Run #raw(block: false, lang: "bash", "pre-commit install").
-      7. Commit changes via #raw(block: false, lang: "bash", "git commit -m \"Fix format\"")
-      8. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
+      7. #raw(block: false, lang: "bash", "git add <changed-files>").
+      8. Commit changes via #raw(block: false, lang: "bash", "git commit -m \"Fix format\"")
+      9. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
   ]
+  )
+]
+
+
+= Python packaging
+
+#slide(title: "Script or package?")[
+  Not every file needs to become a package. A script with a small test function can stay a script, or a notebook.
+
+  Consider a package when code is:
+
+  - imported from multiple scripts or notebooks
+  - reused by collaborators
+  - tested in CI
+  - documented as an importable API
+  - installed into an environment
+  - published or archived as a reusable tool
+]
+
+#slide(title: "Minimal package-shaped project")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*Project structure*], [],),
+    [
+      ```text
+      my-project/
+      ├── README.md
+      ├── pyproject.toml
+      ├── src/
+      |   └── my_project/
+      |       ├── __init__.py
+      |       └── analysis.py
+      └── tests/
+          └── test_analysis.py
+      ```
+
+      `src/` helps tests use the installed package.
+
+      `tests/` keeps tests separate from library code.
+
+      `README.md` contains general information about the repository and is displayed as front page on GitHub and others.
+    ],
+    []
+  )
+]
+
+#slide(title: "Minimal package-shaped project")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*Project structure*], [*Project metadata*],),
+    [
+      ```text
+      my-project/
+      ├── README.md
+      ├── pyproject.toml
+      ├── src/
+      |   └── my_project/
+      |       ├── __init__.py
+      |       └── analysis.py
+      └── tests/
+          └── test_analysis.py
+      ```
+
+      `src/` helps tests use the installed package.
+
+      `tests/` keeps tests separate from library code.
+
+      `README.md` contains general information about the repository and is displayed as front page on GitHub and others.
+    ],
+    [
+      `pyproject.toml` started as build-system configuration, but today it is also the standard place for project metadata and tool configuration.
+
+      It can record:
+
+      - project metadata (Version, description, authors etc.)
+      - supported Python versions
+      - dependencies
+      - optional development dependencies
+      - build-backend and tool settings for Hatchling, Ruff, pytest, mypy, and others
+    ]
+  )
+]
+
+#slide(title: "pyproject.toml")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*File content*], [*Project metadata*],),
+    [
+      ```toml
+      [build-system]
+      requires = ["hatchling"]
+      build-backend = "hatchling.build"
+
+      [project]
+      name = "my-analysis"
+      version = "0.1.0"
+      requires-python = ">=3.11"
+      dependencies = ["numpy", "pandas"]
+
+      [project.optional-dependencies]
+      dev = ["pytest", "ruff", "mypy"]
+      ```
+
+      The key idea: another person or CI should be able to recreate the setup without any effort.
+    ],
+    [
+      `pyproject.toml` started as build-system configuration, but today it is also the standard place for project metadata and tool configuration.
+
+      It can record:
+
+      - project metadata (Version, description, authors etc.)
+      - supported Python versions
+      - dependencies
+      - optional development dependencies
+      - build-backend and tool settings for Hatchling, Ruff, pytest, mypy, and others
+    ]
+  )
+]
+
+#slide(title: "Tool configuration example")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*File content*], [*Project metadata*],),
+    [
+      ```toml
+      [build-system]
+      requires = ["hatchling"]
+      build-backend = "hatchling.build"
+
+      [project]
+      name = "my-analysis"
+      version = "0.1.0"
+      requires-python = ">=3.11"
+      dependencies = ["numpy", "pandas"]
+
+      [project.optional-dependencies]
+      dev = ["pytest", "ruff", "mypy"]
+      ```
+
+      The key idea: another person or CI should be able to recreate the setup without any effort.
+      #grid(
+        columns: (1fr, 1fr),
+        gutter: 1em,
+        [
+          ```toml
+          [tool.ruff]
+          line-length = 79
+          ```
+        ],
+        [
+          ```toml
+          [tool.pytest.ini_options]
+          testpaths = ["tests"]
+          ```
+        ]
+      )
+    ],
+    [
+      `pyproject.toml` started as build-system configuration, but today it is also the standard place for project metadata and tool configuration.
+
+      It can record:
+
+      - project metadata (Version, description, authors etc.)
+      - supported Python versions
+      - dependencies
+      - optional development dependencies
+      - build-backend and tool settings for Hatchling, Ruff, pytest, mypy, and others
+    ]
+  )
+]
+
+#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 packaging")])[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    [
+      1. Install pytest via #raw(block: false, lang: "bash", "python -m pip install -r requirements-dev.txt").
+      2. Run #raw(block: false, lang: "bash", "python example.py") and #raw(block: false, lang: "bash", "python -m pytest").
+      3. Create #raw(block: false, "src/measurement_tools/") and move #raw(block: false, "measurement_tools.py") to #raw(block: false, "analysis.py") there.
+    ],
+    [
+      4. Add #raw(block: false, "__init__.py") and the minimal #raw(block: false, "pyproject.toml") shown in the README.
+      5. Install via #raw(block: false, lang: "bash", "python -m pip install -e .").
+      6. Run the example and tests again.
+      7. Commit and submit via #raw(block: false, lang: "bash", "gh student submit").
+    ]
+  )
+  #v(1cm)
+  #grid(
+    columns: (1fr, 1.5fr),
+    gutter: 1em,
+    [
+      ```text
+      measurement-tools/
+      ├── .gitignore
+      ├── LICENSE.md
+      ├── pyproject.toml
+      ├── README.md
+      ├── src/
+      |   └── measurement_tools/
+      |       ├── __init__.py
+      |       └── analysis.py
+      └── tests/
+          └── test_measurement_tools.py
+      ```
+    ],
+    [
+      `__init__.py`:
+      ```python
+      from .analysis import center_measurements, mean_measurement
+
+      __all__ = ["center_measurements", "mean_measurement"]
+      ```
+    ]
+  )
+
+]
+
+#slide(title: link("https://github.com/ssciwr/cookiecutter-python-package")[SSC Python package cookiecutter])[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    row-gutter: 1em,
+    grid.header([*Run cookiecutter, answer questions*], [*Insepect new package*],),
+    [
+      ```bash
+    $ cookiecutter cookiecutter-python-package/
+      [1/10] project_name (My Project): my-project
+      [2/10] remote_url (None):
+      [3/10] project_slug (my-project):
+      [4/10] full_name (Your Name): My Name
+      [5/10] Select license
+        1 - MIT
+        2 - BSD-2
+        3 - GPL-3.0
+        4 - LGPL-3.0
+        5 - None
+        Choose from [1/2/3/4/5] (1):
+      [6/10] Select github_actions_ci
+        1 - Yes
+        2 - No
+        Choose from [1/2] (1):
+        .
+        .
+      ```
+    ],
+    [
+      #grid(
+        columns: (1fr, 1fr),
+        gutter: 1em,
+        [
+          ```bash
+          ├── CITATION.cff
+          ├── codecov.yml
+          ├── COPYING.md
+          ├── doc/
+          ├── FILESTRUCTURE.md
+          ├── LICENSE.md
+          ├── notebooks
+          │   └── demo.ipynb
+          ├── pyproject.toml
+          ├── README.md
+          ├── src
+          │   └── my_project
+          │       └── __init__.py
+          ├── tests
+          │   ├── conftest.py
+          │   ├── __init__.py
+          │   └── test_my_project.py
+          └── TODO.md
+          ```
+        ],
+        [
+          Follow instructions in `TODO.md` to finish the setup of your new package.
+        ]
+      )
+    ]
   )
 ]
 
 = Tests and Type Hints
 
 #slide(title: "Why tests are essential?")[
-  Tests are executable assumptions. They help answer:
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*Tests are executable assumptions*], [*Tests in scientific code*],),
+    [
+      Tests are executable assumptions. They help answer:
 
-  - Does the code do what I think it does?
-  - Did my recent change break old behavior?
-  - Can a collaborator change this without guessing?
-  - Does the code still work on a clean machine or in CI?
+      - Does the code do what I think it does?
+      - Did my recent change break old behavior?
+      - Can a collaborator change this without guessing?
+      - Does the code still work on a clean machine or in CI?
+    ],
+    [
+      - For scientific code, tests are not only software engineering hygiene.
+      - They are part of making computational results trustworthy.
+      - This course only gives a short introduction.
+    ]
+  )
+  #v(2cm)
+  #align(center)[Full course: #link(testing-url)[Introduction to Python Testing]]
 ]
 
-#slide(title: "Tests in scientific code")[
-  For scientific code, tests are not only software engineering hygiene.
-
-  They are part of making computational results trustworthy.
-
-  This course only gives a short introduction.
-
-  Full course: #link(testing-url)[Introduction to Python Testing]
-]
-
-#slide(title: "A tiny pytest example: code")[
+#slide(title: "A tiny pytest example")[
   #grid(
     columns: (3fr, 2fr),
     gutter: 1em,
@@ -691,11 +928,51 @@ help: Remove unused import: `os`
   Python does not normally enforce these annotations at runtime. Their main value is that they help readers, editors, and type-checking tools.
 ]
 
-#slide(title: logo("", "figures/mypy_light.svg"))[
+#slide(title: [Type hints: `None` and defaults])[
+  A type annotation and a default answer different questions:
+
   #grid(
     columns: (1fr, 1fr),
     gutter: 1em,
-    grid.header([*Installation/Setup*], [*Example*],),
+    grid.header([*Which values are allowed?*], [*May the argument be omitted?*]),
+    [
+      ```python
+      def report(label: str | None): ...
+      ```
+
+      The caller must provide `label`, but its value may be a string or `None`:
+      `report(None)` is valid; `report()` is not.
+    ],
+    [
+      ```python
+      def report(label: str = "Results"): ...
+      ```
+
+      The caller may omit `label`. Its default is `"Results"`, and its declared type does not include `None`.
+    ],
+  )
+
+  #align(center)[
+    Both ideas can be combined:
+
+    ```python
+    def report(
+        values: list[float],
+        label: str | None = None,
+        precision: int = 2,
+    ) -> str:
+        ...
+    ```
+
+    `label` may be omitted or set to `None`; `precision` may be omitted but should be an `int` when supplied.
+  ]
+]
+
+#slide(title: logo("", "figures/mypy_light.svg"))[
+  #grid(
+    columns: (2fr, 3fr),
+    gutter: 1em,
+    grid.header([*Installation/Setup*], [*example.py*],),
     [
       Install mypy:
 
@@ -717,24 +994,19 @@ help: Remove unused import: `os`
       measurements = ["1.0", "2.0", "3.0"]
       print(total(measurements))
       ```
+      ```bash
+      14:00 $ mypy example.py
+      example.py:5: error: Argument 1 to "total" has incompatible type "list[str]"; expected "list[float]"  [arg-type]
+      Found 1 error in 1 file (checked 1 source file)
+      ```
 
-      At runtime this fails. A type checker can flag the mistake earlier:
+      At runtime this fails. A type checker can flag the mistake earlier:\
       `list[str]` is not `list[float]`.
     ]
   )
 ]
 
-#slide(title: "Keep type hints simple")[
-  Type hints are most useful when they stay simple:
-
-  - annotate public functions
-  - annotate ambiguous data structures
-  - use `str | None` for optional values
-  - prefer built-in generics such as `list[str]`
-  - do not turn a beginner project into a typing puzzle
-]
-
-#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section4-tests")])[
+#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 tests")])[
   #grid(
     columns: (1fr, 1fr),
     gutter: 1em,
@@ -747,9 +1019,18 @@ help: Remove unused import: `os`
       4. Examine the issues and fix them.
     ]
   )
+  #v(2cm)
+  #align(center)[
+    ```bash
+      sample_summary.py:18: error: List comprehension has incompatible type List[str]; expected List[float]  [misc]
+      sample_summary.py:31: error: Function is missing a type annotation  [no-untyped-def]
+      sample_summary.py:41: error: Call to untyped function "render_summary" in typed context  [no-untyped-call]
+      Found 3 errors in 1 file (checked 2 source files)
+    ```
+  ]
 ]
 
-#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section4-tests")])[
+#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 tests")])[
   #grid(
     columns: (1fr, 1fr),
     gutter: 1em,
@@ -775,25 +1056,48 @@ help: Remove unused import: `os`
   ```
 ]
 
-#slide(title: [Task 2: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section4-tests")])[
-
+#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 tests")])[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    [
+      1. Install mypy via #raw(block: false, lang: "bash", "python -m pip install mypy").
+      2. Run #raw(block: false, lang: "bash", "python -m sample_summary.py") and #raw(block: false, lang: "bash", "python -m pytest").
+    ],
+    [
+      3. Now run #raw(block: false, lang: "bash", "python -m mypy sample_summary.py").
+      4. Examine the issues and fix them.
+    ]
+  )
   ```python
-  def test_tolerance_boundary_is_included() -> None:
-      assert is_within_tolerance(9.5, target=10.0, tolerance=0.5)
+    return [float(row[1]) for row in rows]
+  ```
+  ```python
+    def render_summary(total: float, accepted: bool) -> str:
   ```
 
-  1. Run #raw(block: false, lang: "bash", "python -m pytest") again.
-  2. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
-
+  5. Extend `tests/test_sample_summary.py` with a test `test_tolerance_boundary_is_included` expressing this requirement:
+  ```text
+  A measured value exactly one tolerance away from its target is accepted. For example, `9.5` is within a tolerance of `0.5` around `10.0`.
+  ```
+  #grid(
+    columns: (3fr, 2fr),
+    gutter: 1em,
+    [
+      ```python
+      def test_tolerance_boundary_is_included() -> None:
+          assert is_within_tolerance(9.5, target=10.0, tolerance=0.5)
+      ```
+    ],
+    [
+      6. Run #raw(block: false, lang: "bash", "python -m pytest") again.
+      7. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
+    ]
+  )
 ]
+
 
 = Common Python Pitfalls
-
-#slide(title: "Pitfall section scope")[
-  This section focuses on mistakes that can silently change results or make a small script difficult to reuse.
-
-  The goal is not to collect every surprising Python behavior. Iterator exhaustion and closure late binding are useful follow-up topics, but they are not central for this course.
-]
 
 #slide(title: "Names refer to objects")[
   Assigning a list to another name does not copy it:
@@ -814,6 +1118,7 @@ help: Remove unused import: `os`
   ```python
   copied = original.copy()
   copied[0].append(99)
+  print(original)  # [[1, 2, 99], [3, 4]]
   ```
 
   When nested values must be independent, copy the known structure explicitly or use `deepcopy` deliberately:
@@ -829,23 +1134,57 @@ help: Remove unused import: `os`
 
 #slide(title: "Mutable default arguments")[
   Defaults are evaluated once, so this list is shared between calls:
-
-  ```python
-  def add_sample(value: float, samples: list[float] = []) -> list[float]:
-      samples.append(value)
-      return samples
-  ```
+  #grid(
+    columns: (3fr, 1fr),
+    rows: 2,
+    column-gutter: 1em,
+    row-gutter: (1em, 5em),
+    [
+      ```python
+      def add_sample(value: float, samples: list[float] = []) -> list[float]:
+          samples.append(value)
+          return samples
+      ```
+      Test this by calling the function twice.
+    ],
+    [
+      ```output
+      >>> add_sample(0.0)
+      [0.0]
+      >>> add_sample(1.0)
+      [0.0, 1.0]
+      >>> add_sample(2.0)
+      [0.0, 1.0, 2.0]
+      ```
+    ]
+  )
 
   Use `None` and create a new list inside the function:
 
-  ```python
-  def add_sample(value: float, samples: list[float] | None = None) -> list[float]:
-      samples = [] if samples is None else samples
-      samples.append(value)
-      return samples
-  ```
-
-  Test this by calling the function twice.
+  #grid(
+    columns: (3fr, 1fr),
+    rows: 2,
+    column-gutter: 1em,
+    row-gutter: (1em, 5em),
+    [
+    ```python
+    def add_sample(value: float, samples: list[float] | None = None) -> list[float]:
+        samples = [] if samples is None else samples
+        samples.append(value)
+        return samples
+    ```
+    ],
+    [
+      ```output
+      >>> add_sample(0.0)
+      [0.0]
+      >>> add_sample(1.0)
+      [1.0]
+      >>> add_sample(2.0)
+      [2.0]
+      ```
+    ]
+  )
 ]
 
 #slide(title: "Compare floating-point values deliberately")[
@@ -920,21 +1259,49 @@ help: Remove unused import: `os`
   ```
 ]
 
-#slide(title: "Names can hide other names")[
-  A local `math.py` can hide the standard-library module. Variables can also hide built-ins:
+#slide(title: "Imports can find the wrong file")[
+  #grid(
+    columns: (1fr, 1fr),
+    gutter: 1em,
+    grid.header([*Why does this fail?*], [*What did Python import?*]),
+    [
+      ```text
+      project/
+      ├── analysis.py
+      └── statistics.py
+      ```
 
-  ```text
-  project/
-  ├── math.py
-  └── analysis.py
-  ```
-  ```python
-  list = [1, 2, 3]
-  sum = 0
-  ```
+      `analysis.py`:
 
-  Prefer project-specific module names and descriptive variables. Selected Ruff `A` rules can detect these problems.
-]
+      ```python
+      import statistics
+
+      values = [1.0, 2.0, 3.0]
+      print(statistics.mean(values))
+      ```
+    ],
+    [
+      ```output
+      AttributeError: module 'statistics'
+      has no attribute 'mean'
+      ```
+
+      Inspect the imported module:
+
+      ```python
+        print(statistics.__file__)
+        ```
+
+        ```output
+        .../project/statistics.py
+        ```
+      ]
+    )
+
+    Python found the local file instead of the standard-library module.
+
+    Rename it to something project-specific, such as `sample_statistics.py`.
+  ]
 
 #slide(title: "Import-time side effects")[
   Module-level code runs during import. Keep reusable logic in functions and
@@ -951,7 +1318,7 @@ help: Remove unused import: `os`
   The guard prevents `main()` from running when tests or other programs import the module.
 ]
 
-#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section5-pitfalls")])[
+#slide(title: [Task 4: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 pitfalls")])[
 
   #grid(
     columns: (1fr, 1fr),
@@ -999,7 +1366,7 @@ help: Remove unused import: `os`
     ]
   )
 ]
-#slide(title: [Task 3: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section5-pitfalls")])[
+#slide(title: [Task 4: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 pitfalls")])[
 
   #grid(
     columns: (1fr, 1fr),
@@ -1037,16 +1404,20 @@ help: Remove unused import: `os`
   )
 ]
 
-= Modern Readable Python
 
-#slide(title: "Readable Python")[
-  Readable code is not necessarily shorter code.
+= Practical Python Patterns
 
-  It is code where the reader can quickly see:
+#slide(title: "Practical Python Patterns")[
+  Python provides small, composable tools that make programs easier to
+  understand, use correctly, and maintain.
 
-  - the data
-  - the intent
-  - the failure modes
+  This section covers patterns for:
+
+  - communicating intent clearly
+  - modeling structured data explicitly
+  - handling paths and resources safely
+  - making runtime behavior observable
+  - expressing common iterations directly
 ]
 
 #slide(title: "Docstrings")[
@@ -1056,8 +1427,8 @@ help: Remove unused import: `os`
     [
       \u{2718}
       ```python
-    def some_function(par1: str, par2: str) -> str:
-        return par1 + "/" + par2 + ".txt"
+      def some_function(par1: str, par2: str) -> str:
+          return par1 + "/" + par2 + ".txt"
       ```
     ],
     [
@@ -1073,7 +1444,7 @@ help: Remove unused import: `os`
           Returns:
               A string composed of two input strings, divided by a forward slash.
           """
-          return output_dir / f"{sample_id}.txt"
+          return par1 + "/" + par2 + ".txt"
       ```
     ]
   )
@@ -1135,7 +1506,7 @@ help: Remove unused import: `os`
   data_dir = Path("data")
   filename = data_dir / f"{sample_id}.csv"
   ```
-  Uses appropritate paths depending on the OS (don't worry about "/" or "\\" anymore.)
+  Uses appropriate paths depending on the OS (don't worry about "/" or "\\" anymore.)
 ]
 
 #slide(title: "pathlib methods and benefits")[
@@ -1153,6 +1524,7 @@ help: Remove unused import: `os`
       ```python
       path.exists()
       path.is_file()
+      path.iterdir()
       path.parent
       path.name
       path.suffix
@@ -1236,22 +1608,6 @@ help: Remove unused import: `os`
   )
 ]
 
-#slide(title: "Frozen records reduce accidental changes")[
-  `frozen=True` prevents fields from being reassigned after creation:
-
-  ```python
-  from dataclasses import dataclass
-
-  @dataclass(frozen=True)
-  class Measurement:
-      sample_id: str
-      value: float
-      unit: str
-  ```
-
-  Freezing is shallow: a list stored in a frozen record can still be mutated. Prefer immutable field types such as tuples when appropriate.
-]
-
 #slide(title: "Mutable fields need a factory")[
   Dataclasses reject a list as a direct default. Give each instance its own list with `default_factory`:
 
@@ -1263,7 +1619,10 @@ help: Remove unused import: `os`
     ```python
     @dataclass
     class Mesh:
-        vertices: list = []  # ValueError
+        vertices: list = []
+    ```
+    ```python
+    ValueError: mutable default <class 'list'> for field vertices is not allowed: use default_factory
     ```
     This would conceptually risk all instances sharing the same list, so dataclasses reject it.
   ],
@@ -1272,7 +1631,6 @@ help: Remove unused import: `os`
     ```python
     @dataclass
     class SamplingRun:
-        run_id: str
         values: list[float] = field(default_factory=list)
     ```
     This is the dataclass equivalent of avoiding a mutable default argument. Factories also work for dictionaries, sets, and more complex defaults.
@@ -1420,30 +1778,48 @@ help: Remove unused import: `os`
   )
 ]
 
-#slide(title: [Task 4: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section6-readable-python")])[
+#slide(title: [Task 5: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 readable-python")])[
 
   #grid(
-    columns: (1fr, 1fr),
+    columns: (1.35fr, 1fr),
     rows: 2,
     gutter: 1em,
     [
-    ],
-    [
-    ]
-  )
-]
-#slide(title: [Task 4: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 section6-readable-python")])[
+      ```python
+      @dataclass(frozen=True, slots=True)
+      class Measurement:
+          """A measured value together with its scientific context."""
 
-  #grid(
-    columns: (1fr, 1fr),
-    rows: 2,
-    gutter: 1em,
-    [
+          sample_id: str
+          value: float
+          unit: str
+      ```
+
+      ```python
+      def report_path(output_dir: Path, sample_id: str) -> Path:
+          """Return the path for one sample report.
+
+          Returns:
+              The path of the sample report.
+
+          """
+          return output_dir / f"{sample_id}.txt"
+      ```
     ],
     [
-      8. Run #raw(block: false, lang: "bash", "python -m pytest") again.
-      9. Run #raw(block: false, lang: "bash", "ruff check --fix .") and #raw(block: false, lang: "bash", "ruff format .")
-      10. Run #raw(block: false, lang: "bash", "gh student submit") for submitting.
+      ```python
+      def render_report(measurement: Measurement) -> str:
+          return (
+              f"Sample {measurement.sample_id}: {measurement.value:.2f} {measurement.unit}\n"
+          )
+      ```
+
+      ```python
+      def save_report(path: Path, report: str) -> None:
+          path.parent.mkdir(parents=True, exist_ok=True)
+          with path.open("w", encoding="utf-8") as handle:
+              handle.write(report)
+      ```
     ]
   )
 ]

@@ -1,12 +1,21 @@
 #import "@preview/touying:0.7.4": *
 #import "ssc-theme.typ": *
 
+#let logo(text, icon, baseline: 10%, hspace: 0.05em, height: 0.9em) = box[
+  #text
+  #h(hspace)
+  #box(
+    baseline: baseline,
+    image(icon, height: height),
+  )
+]
+
 #show: institution-theme.with(
   title-logo: image("figures/ssc_iwr_uni_logos_darkmode.svg"),
   slide-logo: image("figures/ssc_logo_and_text.svg"),
   config-info(
     title: [Course Prerequisites],
-    author: [Best Practices in Python Programming],
+    author: [Best Practices in #logo("", baseline: 40%, hspace: 0.2em, height: 1.5em, "figures/python-logo-generic.svg") Programming],
     date: datetime.today(),
     institution: [Scientific Software Center (SSC), Heidelberg University],
   ),
@@ -183,7 +192,7 @@
   1. Create an account at #link("https://github.com/")[github.com].
   2. Verify the email address for the account.
   3. Record your exact GitHub username.
-  4. Send your username or profile URL to the course instructor.
+  4. Send your username or profile URL to the course instructor \ (e.g., via email to #link("mailto:thomas.isensee@iwr.uni-heidelberg.de")).
 
   Your display name and GitHub username are not necessarily the same.
 
