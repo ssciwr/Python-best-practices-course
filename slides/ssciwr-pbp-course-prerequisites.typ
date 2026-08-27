@@ -1,12 +1,21 @@
 #import "@preview/touying:0.7.4": *
 #import "ssc-theme.typ": *
 
+#let logo(text, icon, baseline: 10%, hspace: 0.05em, height: 0.9em) = box[
+  #text
+  #h(hspace)
+  #box(
+    baseline: baseline,
+    image(icon, height: height),
+  )
+]
+
 #show: institution-theme.with(
   title-logo: image("ssc_iwr_uni_logos_darkmode.svg"),
   slide-logo: image("ssc_logo_and_text.svg"),
   config-info(
     title: [Course Prerequisites],
-    author: [Best Practices in Python Programming],
+    author: [Best Practices in #logo("", baseline: 40%, hspace: 0.2em, height: 1.5em, "figures/python-logo-generic.svg") Programming],
     date: datetime.today(),
     institution: [Scientific Software Center (SSC), Heidelberg University],
   ),
