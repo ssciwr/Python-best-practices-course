@@ -12,7 +12,7 @@ The course is not a full introduction to testing, packaging, Git, or continuous 
 
 Participants should have basic Python knowledge and a laptop with Python installed. A GitHub account is required for the classroom exercises.
 
-Please follow the setup instructions in [PREREQUISITES.md](PREREQUISITES.md) before the course. They cover Python 3.11+, Git, GitHub CLI, classroom50, and optional editor setup for Linux, macOS, and Windows. A separate prerequisite slide deck is available at [slides/prerequisites.typ](slides/prerequisites.typ).
+Please follow the [course setup instructions](PREREQUISITES.md) before the course. They cover Python 3.11+, Git, GitHub CLI, classroom50, and optional editor setup for Linux, macOS, and Windows. These Markdown instructions are the participant-facing source of truth.
 
 ## Learning objectives
 
@@ -35,6 +35,13 @@ After the course participants will be able to:
 3. [Tests and type hints](Material_Part3_Tests/README.md)
 4. [Common Python pitfalls](Material_Part4_Pitfalls/README.md)
 5. [Modern readable Python](Material_Part5_BetterCoding/README.md)
+
+## Presentation slides
+
+The PDFs are intended primarily for presenting the material during the course:
+
+- [Prerequisite slides (PDF)](https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course-prerequisites.pdf)
+- [Complete course slides (PDF)](https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course.pdf)
 
 ## Related SSC courses
 

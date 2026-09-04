@@ -1,24 +1,36 @@
-name: Compile slides
+name: Build and deploy course material
 
 on:
-  # Run CI on pushes to the main branch
   push:
     branches:
       - main
-    paths:
-      - "slides/**"
-  # Run CI on all pull requests to the main branch
+    paths-ignore:
+      - '.gitignore'
+      - '.pre-commit-config.yaml'
+      - 'LICENSE'
   pull_request:
     branches:
       - main
-    paths:
-      - "slides/**"
-  # Run CI upon manual triggers through the 'Actions' tab of the Github UI
+    paths-ignore:
+      - '.gitignore'
+      - '.pre-commit-config.yaml'
+      - 'LICENSE'
   workflow_dispatch:
+    inputs:
+      deploy_site:
+        description: Deploy the main branch to GitHub Pages
+        required: false
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-document:
-    name: Install Typst, compile and upload document
+  build:
+    name: Build slides and site
     runs-on: ubuntu-latest
 
     steps:
@@ -28,15 +40,58 @@ jobs:
       - name: Set up Typst
         uses: typst-community/setup-typst@v5
 
-      - name: Compile Typst script
+      - name: Compile Typst slides
         run: |
-          typst compile --root . slides/ssc-pbp-course.typ
-          typst compile --root . slides/prerequisites.typ
+          font_path="slides/fonts/Source_Sans_3"
+          typst fonts --font-path "$font_path" | grep --fixed-strings --line-regexp "Source Sans 3"
+          typst compile --root . --font-path "$font_path" slides/ssciwr-pbp-course.typ
+          typst compile --root . --font-path "$font_path" slides/ssciwr-pbp-course-prerequisites.typ
 
       - name: Upload PDF artifact
         uses: actions/upload-artifact@v7
         with:
           name: compiled-pdf
           path: |
-            slides/ssc-pbp-course.pdf
-            slides/prerequisites.pdf
+            slides/ssciwr-pbp-course.pdf
+            slides/ssciwr-pbp-course-prerequisites.pdf
+
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Build site with Jekyll
+        uses: actions/jekyll-build-pages@v1
+        with:
+          source: ./
+          destination: ./_site
+
+      - name: Verify generated slides in site
+        run: |
+          test -s _site/slides/ssciwr-pbp-course.pdf
+          test -s _site/slides/ssciwr-pbp-course-prerequisites.pdf
+
+      - name: Upload site preview artifact
+        uses: actions/upload-artifact@v7
+        with:
+          name: site-preview
+          path: _site
+
+      - name: Upload GitHub Pages artifact
+        if: github.event_name == 'workflow_dispatch' && inputs.deploy_site && github.ref == 'refs/heads/main'
+        uses: actions/upload-pages-artifact@v5
+
+  deploy:
+    name: Deploy GitHub Pages
+    if: github.event_name == 'workflow_dispatch' && inputs.deploy_site && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: pages
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
