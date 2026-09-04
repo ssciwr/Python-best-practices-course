@@ -1,0 +1,16 @@
+name: Build and deploy course material
+
+on:
+  workflow_dispatch:
+    inputs:
+      build_site_preview:
+        description: Build and upload the rendered site without deploying it
+        required: false
+        type: boolean
+        default: false
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Placeholder job"
