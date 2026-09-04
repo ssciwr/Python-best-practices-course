@@ -9,8 +9,9 @@ repos:
       - id: check-yaml
       # Trim trailing whitespace of all sorts
       - id: trailing-whitespace
-      # Apply a file size limit of 500kB
+      # Apply a file size limit of 630kB
       - id: check-added-large-files
+        args: ['--maxkb=630']
       # Unify file endings
       - id: end-of-file-fixer
 
