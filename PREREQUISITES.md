@@ -1,6 +1,6 @@
 # Course prerequisites
 
-Please set up the tools below before the course. The exercises use GitHub and classroom50, so a working command-line setup is important.
+Please set up the tools below before the course. The exercises use GitHub and Classroom50, so a working command-line setup is important.
 
 If you already use Conda, pyenv, uv, or an IDE-managed Python installation, that is fine. The important part is that the verification commands at the end work.
 
@@ -10,7 +10,7 @@ If you already use Conda, pyenv, uv, or an IDE-managed Python installation, that
 - Python 3.11 or newer: <https://www.python.org/downloads/>
 - Git: <https://git-scm.com/downloads/>
 - GitHub CLI (`gh`): <https://github.com/cli/cli#installation>
-- classroom50 student CLI extension
+- Classroom50 student CLI extension
 - A terminal or shell
 
 Recommended, but not required:
@@ -30,7 +30,7 @@ sudo apt install python3 python3-venv python3-pip git
 
 Install GitHub CLI using the official instructions for your distribution: <https://github.com/cli/cli#installation>
 
-After installing `gh`, continue with [classroom50 setup](#classroom50-setup).
+After installing `gh`, continue with [Classroom50 setup](#classroom50-setup).
 
 ## macOS
 
@@ -46,7 +46,7 @@ Option 2: use Homebrew:
 brew install python git gh
 ```
 
-After installing `gh`, continue with [classroom50 setup](#classroom50-setup).
+After installing `gh`, continue with [Classroom50 setup](#classroom50-setup).
 
 ## Windows
 
@@ -72,11 +72,11 @@ winget install --id GitHub.cli -e
 
 If the exact Python package is not available, install any Python version 3.11 or newer from <https://www.python.org/downloads/windows/>.
 
-After installing `gh`, continue with [classroom50 setup](#classroom50-setup).
+After installing `gh`, continue with [Classroom50 setup](#classroom50-setup).
 
-## classroom50 setup
+## Classroom50 setup
 
-The course assignments use classroom50 through a GitHub CLI extension.
+The course assignments use Classroom50 through a GitHub CLI extension.
 
 Install the student extension:
 
@@ -96,7 +96,7 @@ Log in for classroom assignments:
 gh student login
 ```
 
-This starts the GitHub login flow with the permissions needed to accept and submit classroom50 assignments. The browser-based login is usually the easiest option.
+This starts the GitHub login flow with the permissions needed to accept and submit Classroom50 assignments. The browser-based login is usually the easiest option.
 
 If the extension is already installed, update it with:
 
@@ -134,7 +134,7 @@ Expected result:
 
 - Python reports version 3.11 or newer.
 - `pip`, `git`, and `gh` print version information.
-- `gh student --help` prints the classroom50 student command help.
+- `gh student --help` prints the Classroom50 student command help.
 - `gh auth status` shows that you are logged in to GitHub.
 
 If `python` works on your system but `python3` does not, that is fine. Use the command that points to Python 3.11 or newer.

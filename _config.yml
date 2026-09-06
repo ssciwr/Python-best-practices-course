@@ -1,1 +1,5 @@
 theme: jekyll-theme-slate
+title: Best Practices in Python Programming
+description: A practical Python course from the Scientific Software Center at Heidelberg University
+url: https://ssciwr.github.io
+baseurl: /Python-best-practices-course

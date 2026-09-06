@@ -1,64 +1,37 @@
 # Best Practices in Python Programming
 
-Material for the course "Best Practices in Python Programming", Scientific Software Center, Heidelberg University.
+Source repository for the Scientific Software Center course “Best Practices in Python Programming” at Heidelberg University.
 
-Original material by Inga Ulusoy. Revised for the next installment by Thomas Isensee.
+Original material by Inga Ulusoy. The current course was developed by Thomas Isensee.
 
-Python is widely used in science and research, from quick data analysis scripts to reusable packages and simulation workflows. This course focuses on practical habits and tools that make Python code easier to read, test, review, and share with collaborators.
+The participant-facing course page is published at <https://ssciwr.github.io/Python-best-practices-course/>.
 
-The course is not a full introduction to testing, packaging, Git, or continuous integration. Instead, it shows the minimum useful practices that every Python project should adopt, and points to dedicated SSC courses for deeper material.
+## Sources of truth
 
-## Prerequisites
+| Material | Canonical source |
+| --- | --- |
+| Taught course content | [`slides/ssciwr-pbp-course.typ`](slides/ssciwr-pbp-course.typ) |
+| Prerequisite presentation | [`slides/ssciwr-pbp-course-prerequisites.typ`](slides/ssciwr-pbp-course-prerequisites.typ) |
+| Written participant setup | [`PREREQUISITES.md`](PREREQUISITES.md) |
+| Exercises and solutions | [`ssciwr-pbp-assignments`](https://github.com/ssciwr-courses/ssciwr-pbp-assignments) |
+| Participant-facing overview | [`index.md`](index.md) |
 
-Participants should have basic Python knowledge and a laptop with Python installed. A GitHub account is required for the classroom exercises.
+## Build the slides
 
-Please follow the [course setup instructions](PREREQUISITES.md) before the course. They cover Python 3.11+, Git, GitHub CLI, classroom50, and optional editor setup for Linux, macOS, and Windows. These Markdown instructions are the participant-facing source of truth.
+Install [Typst](https://github.com/typst/typst), then run from the repository root:
 
-## Learning objectives
+```bash
+typst compile --root . --font-path slides/fonts/Source_Sans_3 slides/ssciwr-pbp-course.typ
 
-After the course participants will be able to:
+typst compile --root . --font-path slides/fonts/Source_Sans_3 slides/ssciwr-pbp-course-prerequisites.typ
+```
 
-- Explain why isolated environments make Python work more reproducible.
-- Use Ruff to lint and format Python code.
-- Understand how `pyproject.toml` connects project metadata and tool configuration.
-- Explain why tests are essential and run a small pytest test suite.
-- Use simple type hints with a type checker to catch bugs earlier.
-- Recognize when a script should become a package.
-- Avoid common beginner-relevant Python pitfalls.
-- Apply modern readability patterns such as `pathlib`, `dataclasses`, f-strings, and `logging`.
-- Use Git, pre-commit hooks, and CI as collaboration guardrails.
+The GitHub Actions workflow compiles both presentations and deploys the PDFs with the course page to GitHub Pages.
 
-## Course content
+## Assignment workflow
 
-1. [Project setup](Material_Part1_Setup/README.md)
-2. [PEPs, style, Ruff, and pre-commit](Material_Part2_Style/README.md)
-3. [Tests and type hints](Material_Part3_Tests/README.md)
-4. [Common Python pitfalls](Material_Part4_Pitfalls/README.md)
-5. [Modern readable Python](Material_Part5_BetterCoding/README.md)
+Assignment sources and solutions are maintained in the separate assignment repository linked above. [Classroom50](https://github.com/foundation50/classroom50) creates an individual repository for each participant from the relevant template.
 
-## Presentation slides
+## License
 
-The PDFs are intended primarily for presenting the material during the course:
-
-- [Prerequisite slides (PDF)](https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course-prerequisites.pdf)
-- [Complete course slides (PDF)](https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course.pdf)
-
-## Related SSC courses
-
-This course gives a compact overview. For full treatments, see:
-
-- Python testing: <https://ssciwr.github.io/python-testing-intro/>
-- Python packaging: <https://ssciwr.github.io/python-packaging/>
-- SSC Python project template: <https://github.com/ssciwr/python-project-template>
-- SSC Python package cookiecutter: <https://github.com/ssciwr/cookiecutter-python-package>
-
-## Assignment plan
-
-The next installment should move assignments to a classroom50 workflow. See [ASSIGNMENTS.md](ASSIGNMENTS.md) for concrete assignment briefs. A useful split is:
-
-1. Ruff and formatting: fix a messy but working codebase until `ruff check` and `ruff format --check` pass.
-2. Tests and type hints: run pytest, add or complete tests, add simple annotations, and fix the bug.
-3. Pitfalls and readability: refactor mutable defaults, import-time side effects, fragile paths, and `print`-based status output.
-4. Project shape: identify whether code should remain a script or become a package, and recognize a minimal `src/`, `tests/`, `pyproject.toml` layout.
-
-Each assignment should start in a failing state and have a reference solution that passes the same classroom50 autograder.
+The material is released under [CC0 1.0 Universal](LICENSE).
