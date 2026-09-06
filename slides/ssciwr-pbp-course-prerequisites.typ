@@ -48,14 +48,29 @@
   )
 ]
 
-#let python-url = "https://www.python.org/downloads/"
 #let git-url = "https://git-scm.com/downloads/"
 #let gh-url = "https://github.com/cli/cli#installation"
 #let miniconda-url = "https://docs.anaconda.com/miniconda/"
+#let python-url = "https://www.python.org/downloads/"
+#let slides-url = "https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course-prerequisites.pdf"
 #let vscode-python-url = "https://code.visualstudio.com/docs/python/python-tutorial"
 #let vscode-lint-url = "https://code.visualstudio.com/docs/python/linting"
 
-#title-slide()
+
+#title-slide(
+  title-qr: link(
+    slides-url,
+    stack(
+      dir: ttb,
+      spacing: .25em,
+      align(
+        center,
+        image("figures/ssciwr-pbp-prerequisite-slides-qr.svg", width: 4cm),
+      ),
+      align(center, text(size: .55em)[Prerequisite slides]),
+    ),
+  ),
+)
 
 == Outline <touying:hidden>
 

@@ -133,7 +133,7 @@
 })
 
 /// Title slide for the institution theme.
-#let title-slide(config: (:), ..args) = touying-slide-wrapper(self => {
+#let title-slide(config: (:), title-qr: none, ..args) = touying-slide-wrapper(self => {
   let info = self.info + args.named()
   self = utils.merge-dicts(
     self,
@@ -176,6 +176,15 @@
         dx: -self.store.title-margin-x,
         dy: -self.store.bottom-rule-height - .9em,
         text(size: .65em, fill: self.colors.primary, [Last updated: #date]),
+      )
+    }
+
+    if title-qr != none {
+      place(
+        bottom + left,
+        dx: self.store.title-margin-x,
+        dy: -self.store.bottom-rule-height - .8em,
+        title-qr,
       )
     }
 
