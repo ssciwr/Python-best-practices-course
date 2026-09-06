@@ -44,15 +44,17 @@
   )
 ]
 
-#let testing-url = "https://ssciwr.github.io/python-testing-intro/"
-#let packaging-url = "https://ssciwr.github.io/python-packaging/"
-#let template-url = "https://github.com/ssciwr/python-project-template"
 #let cookiecutter-url = "https://github.com/ssciwr/cookiecutter-python-package"
+#let nbstripout-url = "https://pypi.org/project/nbstripout/"
+#let packaging-url = "https://ssciwr.github.io/python-packaging/"
 #let peps-url = "https://peps.python.org/"
 #let pep8-url = "https://peps.python.org/pep-0008/"
 #let ruff-url = "https://docs.astral.sh/ruff/"
+#let slides-url = "https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course.pdf"
+#let template-url = "https://github.com/ssciwr/python-project-template"
+#let testing-url = "https://ssciwr.github.io/python-testing-intro/"
 #let uv-url = "https://docs.astral.sh/uv/"
-#let nbstripout-url = "https://pypi.org/project/nbstripout/"
+
 
 #show: institution-theme.with(
   title-logo: image("figures/ssc_iwr_uni_logos_darkmode.svg"),
@@ -65,7 +67,20 @@
   ),
 )
 
-#title-slide()
+#title-slide(
+  title-qr: link(
+    slides-url,
+    stack(
+      dir: ttb,
+      spacing: .25em,
+      align(
+        center,
+        image("figures/ssciwr-pbp-course-slides-qr.svg", width: 4cm),
+      ),
+      align(center, text(size: .55em)[Course slides]),
+    ),
+  ),
+)
 
 == Outline <touying:hidden>
 
