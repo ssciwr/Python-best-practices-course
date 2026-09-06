@@ -2,11 +2,16 @@
 
 #let font-size = 16pt
 
-#let _rule(height, fill) = rect(
+#let _rule(thickness, paint) = box(
   width: 100%,
-  height: height,
-  fill: fill,
-  stroke: none,
+  height: thickness,
+  align(
+    center + horizon,
+    line(
+      length: 100% - thickness,
+      stroke: (paint: paint, thickness: thickness, cap: "round"),
+    ),
+  ),
 )
 
 #let _logo(info, height, override: auto) = {
@@ -174,7 +179,15 @@
       )
     }
 
-    place(bottom, _rule(self.store.bottom-rule-height, self.colors.primary))
+    place(
+      bottom,
+      rect(
+        width: 100%,
+        height: self.store.bottom-rule-height,
+        fill: self.colors.primary,
+        stroke: none,
+      ),
+    )
   }
   touying-slide(self: self, body)
 })
@@ -206,7 +219,7 @@
     block(width: 75%, {
       utils.display-current-heading(level: 1)
       v(.55em)
-      _rule(2pt, self.colors.primary)
+      _rule(4pt, self.colors.primary)
     })
     body
   }
@@ -235,7 +248,7 @@
   header-rule-gap: .35em,
   header-body-gap: 1.15em,
   title-rule-height: 2pt,
-  header-rule-height: 1.2pt,
+  header-rule-height: 2pt,
   bottom-rule-height: 8pt,
   subslide-preamble: none,
   ..args,
