@@ -501,21 +501,21 @@ help: Remove unused import: `os`
       python -m pip install pre-commit
       pre-commit install
       ```
-  ],
-  [
-    `.pre-commit-config.yaml` in repository root:
-    ```yaml
-    repos:
-      - repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: v0.16.6
-        hooks:
-          - id: ruff-check
-            args: [--fix, --show-fixes]
-          - id: ruff-format
-    ```
+    ],
+    [
+      `.pre-commit-config.yaml` in repository root:
+      ```yaml
+      repos:
+        - repo: https://github.com/astral-sh/ruff-pre-commit
+          rev: v0.16.7
+          hooks:
+            - id: ruff-check
+              args: [--fix, --show-fixes]
+            - id: ruff-format
+      ```
 
-    Run all hooks manually with #raw(block: false, lang: "bash", "pre-commit run --all-files").
-  ]
+      Run all hooks manually with #raw(block: false, lang: "bash", "pre-commit run --all-files").
+    ]
   )
 ]
 
@@ -529,32 +529,32 @@ help: Remove unused import: `os`
     row-gutter: 1em,
     grid.header([*General*], [*nbstripout*],),
     [
-    ```yaml
-    repos:
-      - repo: https://github.com/pre-commit/pre-commit-hooks
-        rev: v6.0.0
-        hooks:
-          - id: end-of-file-fixer
-          - id: check-added-large-files
-          - id: check-json
-          - id: check-toml
-          - id: check-yaml
-          - id: mixed-line-ending
-          - id: requirements-txt-fixer
-          - id: trailing-whitespace
-    ```
-    Always good to have.
+      ```yaml
+      repos:
+        - repo: https://github.com/pre-commit/pre-commit-hooks
+          rev: v6.0.0
+          hooks:
+            - id: end-of-file-fixer
+            - id: check-added-large-files
+            - id: check-json
+            - id: check-toml
+            - id: check-yaml
+            - id: mixed-line-ending
+            - id: requirements-txt-fixer
+            - id: trailing-whitespace
+      ```
+      Always good to have.
     ],
     [
-    ```yaml
-    repos:
-      - repo: https://github.com/kynan/nbstripout
-        rev: 0.9.1
-        hooks:
-          - id: nbstripout
-            files: ".ipynb"
-    ```
-    Remove output from Jupyter notebooks. Commit only code.
+      ```yaml
+      repos:
+        - repo: https://github.com/kynan/nbstripout
+          rev: 0.9.1
+          hooks:
+            - id: nbstripout
+              files: ".ipynb"
+      ```
+      Remove output from Jupyter notebooks. Commit only code.
     ]
   )
 ]
@@ -586,14 +586,14 @@ help: Remove unused import: `os`
     ],
     [
       `.pre-commit-config.yaml` in repository root:
-      ```bash
+      ```yaml
       repos:
-      - repo: https://github.com/astral-sh/ruff-pre-commit
-        rev: v0.16.6
-        hooks:
-          - id: ruff-check
-            args: [--fix, --show-fixes]
-          - id: ruff-format
+        - repo: https://github.com/astral-sh/ruff-pre-commit
+          rev: v0.16.7
+          hooks:
+            - id: ruff-check
+              args: [--fix, --show-fixes]
+            - id: ruff-format
       ```
 
       6. Run #raw(block: false, lang: "bash", "pre-commit install").
