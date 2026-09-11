@@ -50,6 +50,7 @@
 #let peps-url = "https://peps.python.org/"
 #let pep8-url = "https://peps.python.org/pep-0008/"
 #let ruff-url = "https://docs.astral.sh/ruff/"
+#let prerequisite-slides-url = "https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course-prerequisites.pdf"
 #let slides-url = "https://ssciwr.github.io/Python-best-practices-course/slides/ssciwr-pbp-course.pdf"
 #let template-url = "https://github.com/ssciwr/python-project-template"
 #let testing-url = "https://ssciwr.github.io/python-testing-intro/"
@@ -68,16 +69,32 @@
 )
 
 #title-slide(
-  title-qr: link(
-    slides-url,
-    stack(
-      dir: ttb,
-      spacing: .25em,
-      align(
-        center,
-        image("figures/ssciwr-pbp-course-slides-qr.svg", width: 4cm),
+  title-qr: grid(
+    columns: (auto, auto),
+    column-gutter: 1em,
+    link(
+      slides-url,
+      stack(
+        dir: ttb,
+        spacing: .25em,
+        align(
+          center,
+          image("figures/ssciwr-pbp-course-slides-qr.svg", width: 4cm),
+        ),
+        align(center, text(size: .55em)[Course slides]),
       ),
-      align(center, text(size: .55em)[Course slides]),
+    ),
+    link(
+      prerequisite-slides-url,
+      stack(
+        dir: ttb,
+        spacing: .25em,
+        align(
+          center,
+          image("figures/ssciwr-pbp-prerequisite-slides-qr.svg", width: 4cm),
+        ),
+        align(center, text(size: .55em)[Prerequisite slides]),
+      ),
     ),
   ),
 )
