@@ -1813,20 +1813,23 @@ help: Remove unused import: `os`
 #slide(title: [Task 5: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 readable-python")])[
 
   #grid(
-    columns: (1.35fr, 1fr),
+    columns: (1.1fr, 1fr),
     rows: 2,
     gutter: 1em,
     [
       ```python
       @dataclass(frozen=True, slots=True)
       class Measurement:
-          """A measured value together with its scientific context."""
+          """A measured value together with
+          its scientific context.
+          """
 
           sample_id: str
           value: float
           unit: str
       ```
-
+    ],
+    [
       ```python
       def report_path(output_dir: Path, sample_id: str) -> Path:
           """Return the path for one sample report.
@@ -1838,14 +1841,21 @@ help: Remove unused import: `os`
           return output_dir / f"{sample_id}.txt"
       ```
     ],
+  )
+  #grid(
+    columns: (1.1fr, 1fr),
+    rows: 2,
+    gutter: 1em,
     [
       ```python
       def render_report(measurement: Measurement) -> str:
           return (
-              f"Sample {measurement.sample_id}: {measurement.value:.2f} {measurement.unit}\n"
+              f"Sample {measurement.sample_id}: "
+              f"{measurement.value:.2f} {measurement.unit}\n"
           )
       ```
-
+    ],
+    [
       ```python
       def save_report(path: Path, report: str) -> None:
           path.parent.mkdir(parents=True, exist_ok=True)
@@ -1854,6 +1864,33 @@ help: Remove unused import: `os`
       ```
     ]
   )
+]
+
+#slide(title: [Task 5: #raw(block: false, lang: "bash", "gh student accept ssciwr-courses pbp-2026-09-16 readable-python")])[
+  ```python
+    from dataclasses import FrozenInstanceError
+    import pytest
+
+    def test_measurements_have_value_equality() -> None:
+        assert Measurement("A5", 21.35, "C") == Measurement("A5", 21.35, "C")
+
+    def test_measurements_with_different_fields_are_unequal() -> None:
+        assert Measurement("A5", 21.35, "C") != Measurement("A5", 22.0, "C")
+
+    def test_measurements_are_frozen() -> None:
+        measurement = Measurement("A5", 21.35, "C")
+
+        with pytest.raises(FrozenInstanceError):
+            measurement.value = 22.0
+
+    def test_report_path_is_a_path(tmp_path: Path) -> None:
+        assert report_path(tmp_path, "A5") == tmp_path / "A5.txt"
+
+    def test_save_report_creates_parent_directories(tmp_path: Path) -> None:
+        path = report_path(tmp_path / "reports" / "accepted", "A5")
+        save_report(path, "Sample A5: 21.35 C\n")
+        assert path.read_text(encoding="utf-8") == "Sample A5: 21.35 C\n"
+  ```
 ]
 
 = Comment on AI/LLM usage
